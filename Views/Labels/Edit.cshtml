@@ -1,0 +1,105 @@
+﻿@model Shipping_Label_App.Models.Labels
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Labels</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LableID" />
+            <div class="form-group">
+                <label asp-for="FromCountry" class="control-label"></label>
+                <input asp-for="FromCountry" class="form-control" />
+                <span asp-validation-for="FromCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToCountry" class="control-label"></label>
+                <input asp-for="ToCountry" class="form-control" />
+                <span asp-validation-for="ToCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromName" class="control-label"></label>
+                <input asp-for="FromName" class="form-control" />
+                <span asp-validation-for="FromName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToName" class="control-label"></label>
+                <input asp-for="ToName" class="form-control" />
+                <span asp-validation-for="ToName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromStreet" class="control-label"></label>
+                <input asp-for="FromStreet" class="form-control" />
+                <span asp-validation-for="FromStreet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToStreet" class="control-label"></label>
+                <input asp-for="ToStreet" class="form-control" />
+                <span asp-validation-for="ToStreet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromStreet2" class="control-label"></label>
+                <input asp-for="FromStreet2" class="form-control" />
+                <span asp-validation-for="FromStreet2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToStreet2" class="control-label"></label>
+                <input asp-for="ToStreet2" class="form-control" />
+                <span asp-validation-for="ToStreet2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromCity" class="control-label"></label>
+                <input asp-for="FromCity" class="form-control" />
+                <span asp-validation-for="FromCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromZip" class="control-label"></label>
+                <input asp-for="FromZip" class="form-control" />
+                <span asp-validation-for="FromZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToZip" class="control-label"></label>
+                <input asp-for="ToZip" class="form-control" />
+                <span asp-validation-for="ToZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromState" class="control-label"></label>
+                <input asp-for="FromState" class="form-control" />
+                <span asp-validation-for="FromState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToState" class="control-label"></label>
+                <input asp-for="ToState" class="form-control" />
+                <span asp-validation-for="ToState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromPhone" class="control-label"></label>
+                <input asp-for="FromPhone" class="form-control" />
+                <span asp-validation-for="FromPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToPhone" class="control-label"></label>
+                <input asp-for="ToPhone" class="form-control" />
+                <span asp-validation-for="ToPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
