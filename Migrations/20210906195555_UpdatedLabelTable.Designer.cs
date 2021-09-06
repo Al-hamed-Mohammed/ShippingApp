@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shipping_Label_App.Data;
 
 namespace Shipping_Label_App.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210906195555_UpdatedLabelTable")]
+    partial class UpdatedLabelTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,29 +221,6 @@ namespace Shipping_Label_App.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Shipping_Label_App.Models.Classes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClassName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("classes");
-                });
-
             modelBuilder.Entity("Shipping_Label_App.Models.Labels", b =>
                 {
                     b.Property<int>("LableID")
@@ -251,12 +230,6 @@ namespace Shipping_Label_App.Migrations
 
                     b.Property<int>("ClassId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Datecreated")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("FromCity")
                         .IsRequired()
@@ -294,9 +267,6 @@ namespace Shipping_Label_App.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
@@ -350,56 +320,12 @@ namespace Shipping_Label_App.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("TrackingNo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
                     b.HasKey("LableID");
 
                     b.ToTable("Labels");
-                });
-
-            modelBuilder.Entity("Shipping_Label_App.Models.ProviderClasses", b =>
-                {
-                    b.Property<int>("ProviderID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClassID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProviderID", "ClassID");
-
-                    b.HasIndex("ClassID");
-
-                    b.ToTable("ProviderClasses");
-                });
-
-            modelBuilder.Entity("Shipping_Label_App.Models.Providers", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ProviderName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("ShipmentCost")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("providers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -451,35 +377,6 @@ namespace Shipping_Label_App.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Shipping_Label_App.Models.ProviderClasses", b =>
-                {
-                    b.HasOne("Shipping_Label_App.Models.Classes", "Classes")
-                        .WithMany("ProviderClasses")
-                        .HasForeignKey("ClassID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Shipping_Label_App.Models.Providers", "Providers")
-                        .WithMany("ProviderClasses")
-                        .HasForeignKey("ProviderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Classes");
-
-                    b.Navigation("Providers");
-                });
-
-            modelBuilder.Entity("Shipping_Label_App.Models.Classes", b =>
-                {
-                    b.Navigation("ProviderClasses");
-                });
-
-            modelBuilder.Entity("Shipping_Label_App.Models.Providers", b =>
-                {
-                    b.Navigation("ProviderClasses");
                 });
 #pragma warning restore 612, 618
         }
