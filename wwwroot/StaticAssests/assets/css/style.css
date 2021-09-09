@@ -403,9 +403,11 @@ ol, ul {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  /* height: 80vh; */
-  background: #12263F;
+    width: 100%;
+    /* height: 80vh; */
+    /* background: #12263F;*/
+    background: rgb(104,132,241);
+    background: radial-gradient(circle, rgba(104,132,241,1) 0%, rgba(160,170,255,1) 62%, rgba(81,183,255,1) 100%);
 }
 
 #hero .container {

@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Shipping_Label_App.Data;
 using Shipping_Label_App.Models;
+using Shipping_Label_App.UtilityClasses;
 
 namespace Shipping_Label_App.Controllers
 {
     public class LabelsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        
 
         public LabelsController(ApplicationDbContext context)
         {
@@ -22,6 +25,7 @@ namespace Shipping_Label_App.Controllers
         // GET: Labels
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Labels.ToListAsync());
         }
 
@@ -58,6 +62,7 @@ namespace Shipping_Label_App.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 _context.Add(labels);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

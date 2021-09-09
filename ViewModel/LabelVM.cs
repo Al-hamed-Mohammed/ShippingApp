@@ -1,4 +1,5 @@
-﻿using Shipping_Label_App.UtilityClasses;
+﻿using Shipping_Label_App.Models;
+using Shipping_Label_App.UtilityClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,9 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Shipping_Label_App.Models
+namespace Shipping_Label_App.ViewModel
 {
-    public class Labels
+    public class LabelVM
     {
         [Key]
         public int LableID { get; set; }
@@ -85,6 +86,7 @@ namespace Shipping_Label_App.Models
 
         [Display(Name = "Providers")]
         public int ProviderID { get; set; }
+        public string ProviderName { get; set; }
 
 
         // Other secion fields here
@@ -113,6 +115,9 @@ namespace Shipping_Label_App.Models
         public DateTime Datecreated { get; set; }
         public DateTime DateModified { get; set; }
         public string UserId { get; set; }
+        public string UserName { get; set; }
+        public string ClassName { get; set; }
+
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -133,7 +138,5 @@ namespace Shipping_Label_App.Models
         public Providers Provider { get; set; }
         [NotMapped]
         public Classes Class { get; set; }
-        
-
     }
 }

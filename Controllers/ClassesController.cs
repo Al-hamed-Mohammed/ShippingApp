@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Shipping_Label_App.Models;
 
 namespace Shipping_Label_App.Controllers
 {
+    [Authorize]
     public class ClassesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,12 +22,14 @@ namespace Shipping_Label_App.Controllers
         }
 
         // GET: Classes
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.classes.ToListAsync());
         }
 
         // GET: Classes/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +48,7 @@ namespace Shipping_Label_App.Controllers
         }
 
         // GET: Classes/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -66,6 +71,7 @@ namespace Shipping_Label_App.Controllers
         }
 
         // GET: Classes/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +92,7 @@ namespace Shipping_Label_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ClassName,DateCreated,DateModified")] Classes classes)
         {
             if (id != classes.Id)
@@ -117,6 +124,7 @@ namespace Shipping_Label_App.Controllers
         }
 
         // GET: Classes/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

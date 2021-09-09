@@ -15,20 +15,19 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Label Categories</li>
+                    <li class="breadcrumb-item active">All Label</li>
                 </ol>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
 <section class="content p-3">
-    <a class="btn btn-primary m-2" asp-action="Create">Create New</a>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Details</h3>
+                        <h3 class="card-title">All Labels</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -62,46 +61,48 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.TrackingNo)
                                     </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ApplicationUser.Name)
+                                    </th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FromName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ToName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FromCity)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ToCity)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FromState)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ToState)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ProviderName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ClassName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TrackingNo)
-                                        </td>
-                                        <td>
-                                            <a asp-action="Edit" asp-route-id="@item.LableID">Edit</a> |
-                                            <a asp-action="Details" asp-route-id="@item.LableID">Details</a> |
-                                            <a asp-action="Delete" asp-route-id="@item.LableID">Delete</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FromName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ToName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FromCity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ToCity)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FromState)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ToState)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProviderName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClassName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TrackingNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+
+                                </tr>
                                 }
                             </tbody>
                         </table>
