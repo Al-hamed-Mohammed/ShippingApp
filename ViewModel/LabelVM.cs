@@ -138,5 +138,25 @@ namespace Shipping_Label_App.ViewModel
         public Providers Provider { get; set; }
         [NotMapped]
         public Classes Class { get; set; }
+
+        [NotMapped]
+        [Display(Name = "From Address")]
+        public string FromAddress
+        {
+            get
+            {
+                return FromStreet + ", " + FromCity + ", " + FromState + ", " + FromZip;
+            }
+        }
+
+        [NotMapped]
+        [Display(Name = "To Address")]
+        public string ToAddress
+        {
+            get
+            {
+                return ToStreet + ", " + ToCity + ", " + ToState + ", " + ToZip;
+            }
+        }
     }
 }

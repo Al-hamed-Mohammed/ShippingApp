@@ -14,6 +14,7 @@ namespace Shipping_Label_App.Models
         
         [Required]
         [MaxLength(50)]
+        [Display(Name = "Provider")]
         public string ProviderName { get; set; }
 
         [Required]
