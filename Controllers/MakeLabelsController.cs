@@ -2,33 +2,87 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Shipping_Label_App.Data;
 using Shipping_Label_App.Models;
 using Shipping_Label_App.UtilityClasses;
+using Shipping_Label_App.ViewModel;
 
 namespace Shipping_Label_App.Controllers
 {
+    [Authorize]
     public class MakeLabelsController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public MakeLabelsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public MakeLabelsController(ApplicationDbContext context, 
+            IWebHostEnvironment webHostEnvironment, 
+            UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
 
-        // GET: MakeLabels
-        public async Task<IActionResult> Index()
-        {   
-            return View(await _context.Labels.ToListAsync());
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AllLabels()
+        {
+
+            var labellist = await _context.Labels.Select(s => new LabelVM
+            {
+                LableID = s.LableID,
+                FromName = s.FromName,
+                ToName = s.ToName,
+                FromCity = s.FromCity,
+                ToCity = s.ToCity,
+                FromState = s.FromState,
+                ToState = s.ToState,
+                Provider = s.Provider,
+                Class = s.Class,
+                TrackingNo = s.TrackingNo,
+                UserId = s.UserId,
+                UserName = s.ApplicationUser == null ? "" : s.ApplicationUser.UserName,
+                ProviderName = _context.providers.Where(x => x.Id == s.ProviderID).Select(z => z.ProviderName).FirstOrDefault(),
+                ClassName = _context.classes.Where(x => x.Id == s.ClassId).Select(z => z.ClassName).FirstOrDefault()
+
+            }).ToListAsync();
+            return View(labellist);
         }
 
+        [Authorize(Roles = "Admin ,User")]
+        public async Task<IActionResult> Index()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var list = await _context.Labels.Where(s => s.ApplicationUser == user).Select(s => new LabelVM
+            {
+                LableID = s.LableID,
+                FromName = s.FromName,
+                ToName = s.ToName,
+                FromCity = s.FromCity,
+                ToCity = s.ToCity,
+                FromState = s.FromState,
+                ToState = s.ToState,
+                Provider = s.Provider,
+                Class = s.Class,
+                TrackingNo = s.TrackingNo,
+                UserId = s.UserId,
+                UserName = s.ApplicationUser == null ? "" : s.ApplicationUser.UserName,
+                ProviderName = _context.providers.Where(x => x.Id == s.ProviderID).Select(z => z.ProviderName).FirstOrDefault(),
+                ClassName = _context.classes.Where(x => x.Id == s.ClassId).Select(z => z.ClassName).FirstOrDefault()
+            }).ToListAsync();
+
+
+
+            return View(list);
+        }
+        [Authorize(Roles = "Admin ,User")]
         // GET: MakeLabels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,7 +100,7 @@ namespace Shipping_Label_App.Controllers
 
             return View(labels);
         }
-
+        [Authorize(Roles = "Admin ,User")]
         // GET: MakeLabels/Create
         public IActionResult Create()
         {
@@ -72,6 +126,8 @@ namespace Shipping_Label_App.Controllers
                 labels.DateModified = DateTime.Now;
                 labels.IsActive = false;
                 labels.TrackingNo = null;
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                labels.ApplicationUser = user;
 
                 _context.Add(labels);
                 await _context.SaveChangesAsync();
@@ -84,7 +140,7 @@ namespace Shipping_Label_App.Controllers
             labels.Classes = GetClasses();
             return View(labels);
         }
-
+        [Authorize(Roles = "Admin ,User")]
         // GET: MakeLabels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -94,6 +150,10 @@ namespace Shipping_Label_App.Controllers
             }
 
             var labels = await _context.Labels.FindAsync(id);
+            labels.StatesList = GetStates();
+            labels.CountriesList = GetCountries();
+            labels.Providers = GetProviders();
+            labels.Classes = GetClasses();
             if (labels == null)
             {
                 return NotFound();
@@ -137,6 +197,7 @@ namespace Shipping_Label_App.Controllers
         }
 
         // GET: MakeLabels/Delete/5
+        [Authorize(Roles = "Admin ,User")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
