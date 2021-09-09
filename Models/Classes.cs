@@ -13,6 +13,7 @@ namespace Shipping_Label_App.Models
         
         [Required]
         [MaxLength(100)]
+        [Display(Name = "Class")]
         public string ClassName { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

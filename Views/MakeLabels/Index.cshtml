@@ -38,20 +38,12 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.FromName)
                                     </th>
+                                  
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ToName)
+                                        @Html.DisplayNameFor(model => model.FromAddress)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FromCity)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ToCity)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.FromState)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ToState)
+                                        @Html.DisplayNameFor(model => model.ToAddress)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Provider.ProviderName)
@@ -68,40 +60,31 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FromName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ToName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FromCity)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ToCity)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FromState)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ToState)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ProviderName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ClassName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TrackingNo)
-                                        </td>
-                                        <td>
-                                            <a asp-action="Edit" asp-route-id="@item.LableID">Edit</a> |
-                                            <a asp-action="Details" asp-route-id="@item.LableID">Details</a> |
-                                            <a asp-action="Delete" asp-route-id="@item.LableID">Delete</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FromName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FromAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ToAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProviderName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClassName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TrackingNo)
+                                    </td>
+                                    <td>
+                                        @*<a asp-action="Edit" asp-route-id="@item.LableID"><i class="fas fa-edit"></i></a> |*@
+                                        <a asp-action="Details" asp-route-id="@item.LableID"><i class="far fa-newspaper"></i></a> |
+                                        <a asp-action="Delete" asp-route-id="@item.LableID"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

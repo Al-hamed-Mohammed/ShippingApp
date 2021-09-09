@@ -40,12 +40,18 @@ namespace Shipping_Label_App.Controllers
                 LableID = s.LableID,
                 FromName = s.FromName,
                 ToName = s.ToName,
+                FromStreet = s.FromStreet,
+                ToStreet = s.ToStreet,
+                FromStreet2 = s.FromStreet2,
+                ToStreet2 = s.ToStreet2,
                 FromCity = s.FromCity,
                 ToCity = s.ToCity,
                 FromState = s.FromState,
                 ToState = s.ToState,
                 Provider = s.Provider,
                 Class = s.Class,
+                FromZip = s.FromZip,
+                ToZip = s.ToZip,
                 TrackingNo = s.TrackingNo,
                 UserId = s.UserId,
                 UserName = s.ApplicationUser == null ? "" : s.ApplicationUser.UserName,
@@ -66,11 +72,17 @@ namespace Shipping_Label_App.Controllers
                 FromName = s.FromName,
                 ToName = s.ToName,
                 FromCity = s.FromCity,
+                FromStreet = s.FromStreet,
+                ToStreet = s.ToStreet,
+                FromStreet2 = s.FromStreet2,
+                ToStreet2 = s.ToStreet2,
                 ToCity = s.ToCity,
                 FromState = s.FromState,
                 ToState = s.ToState,
                 Provider = s.Provider,
                 Class = s.Class,
+                FromZip = s.FromZip,
+                ToZip = s.ToZip,
                 TrackingNo = s.TrackingNo,
                 UserId = s.UserId,
                 UserName = s.ApplicationUser == null ? "" : s.ApplicationUser.UserName,
@@ -163,7 +175,8 @@ namespace Shipping_Label_App.Controllers
 
         // POST: MakeLabels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.0
+        //LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,TrackingNo,Datecreated,DateModified,IsActive
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,TrackingNo,Datecreated,DateModified,IsActive")] Labels labels)
@@ -177,7 +190,13 @@ namespace Shipping_Label_App.Controllers
             {
                 try
                 {
-                    _context.Update(labels);
+                    var labelitem = await _context.Labels.FirstOrDefaultAsync(l => l.LableID == id);
+                    if (labelitem == null)
+                        return NotFound();
+
+                    labelitem.TrackingNo = labels.TrackingNo;
+                    labelitem.DateModified = DateTime.Now;
+                    _context.Update(labelitem);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -191,7 +210,7 @@ namespace Shipping_Label_App.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(AllLabels));
             }
             return View(labels);
         }

@@ -38,19 +38,10 @@
                                         @Html.DisplayNameFor(model => model.FromName)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ToName)
+                                        @Html.DisplayNameFor(model => model.FromAddress)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.FromCity)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ToCity)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.FromState)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ToState)
+                                        @Html.DisplayNameFor(model => model.ToAddress)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Provider.ProviderName)
@@ -62,7 +53,7 @@
                                         @Html.DisplayNameFor(model => model.TrackingNo)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.ApplicationUser.Name)
+                                      User Name
                                     </th>
                                     <th></th>
                                 </tr>
@@ -75,19 +66,10 @@
                                         @Html.DisplayFor(modelItem => item.FromName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.ToName)
+                                        @Html.DisplayFor(modelItem => item.FromAddress)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FromCity)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ToCity)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FromState)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ToState)
+                                        @Html.DisplayFor(modelItem => item.ToAddress)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ProviderName)
@@ -101,7 +83,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.UserName)
                                     </td>
-
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.LableID"><i class="fas fa-edit"></i></a> |
+                                        <a asp-action="Details" asp-route-id="@item.LableID"><i class="far fa-newspaper"></i></a> |
+                                        <a asp-action="Delete" asp-route-id="@item.LableID"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
                                 </tr>
                                 }
                             </tbody>
