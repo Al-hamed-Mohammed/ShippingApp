@@ -34,7 +34,13 @@ namespace Shipping_Label_App.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllLabels()
         {
-
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
             var labellist = await _context.Labels.Select(s => new LabelVM
             {
                 LableID = s.LableID,
@@ -56,8 +62,8 @@ namespace Shipping_Label_App.Controllers
                 UserId = s.UserId,
                 UserName = s.ApplicationUser == null ? "" : s.ApplicationUser.UserName,
                 ProviderName = _context.providers.Where(x => x.Id == s.ProviderID).Select(z => z.ProviderName).FirstOrDefault(),
-                ClassName = _context.classes.Where(x => x.Id == s.ClassId).Select(z => z.ClassName).FirstOrDefault()
-
+                ClassName = _context.classes.Where(x => x.Id == s.ClassId).Select(z => z.ClassName).FirstOrDefault(),
+                RomeName = stringrole
             }).ToListAsync();
             return View(labellist);
         }
@@ -66,6 +72,12 @@ namespace Shipping_Label_App.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
             var list = await _context.Labels.Where(s => s.ApplicationUser == user).Select(s => new LabelVM
             {
                 LableID = s.LableID,
@@ -87,40 +99,67 @@ namespace Shipping_Label_App.Controllers
                 UserId = s.UserId,
                 UserName = s.ApplicationUser == null ? "" : s.ApplicationUser.UserName,
                 ProviderName = _context.providers.Where(x => x.Id == s.ProviderID).Select(z => z.ProviderName).FirstOrDefault(),
-                ClassName = _context.classes.Where(x => x.Id == s.ClassId).Select(z => z.ClassName).FirstOrDefault()
+                ClassName = _context.classes.Where(x => x.Id == s.ClassId).Select(z => z.ClassName).FirstOrDefault(),
+                RomeName = stringrole
             }).ToListAsync();
 
-
-
+            //var user = await userManager.FindByIdAsync(userId);
+            
+            
             return View(list);
         }
         [Authorize(Roles = "Admin ,User")]
         // GET: MakeLabels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //var labels = await _context.Labels
+            //    .FirstOrDefaultAsync(m => m.LableID == id);
+            //if (labels == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return View(labels);
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var labels = await _context.Labels
-                .FirstOrDefaultAsync(m => m.LableID == id);
+            var labels = await _context.Labels.FindAsync(id);
+            labels.StatesList = GetStates();
+            labels.CountriesList = GetCountries();
+            labels.Providers = GetProviders();
+            labels.Classes = GetClasses();
             if (labels == null)
             {
                 return NotFound();
             }
-
             return View(labels);
         }
         [Authorize(Roles = "Admin ,User")]
         // GET: MakeLabels/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var model = new Labels();
             model.StatesList = GetStates();
             model.CountriesList = GetCountries();
             model.Providers = GetProviders();
             model.Classes = GetClasses();
+
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
+            model.RomeName = stringrole;
             return View(model);
         }
 
@@ -134,6 +173,9 @@ namespace Shipping_Label_App.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                
+                
                 labels.Datecreated = DateTime.Now;
                 labels.DateModified = DateTime.Now;
                 labels.IsActive = false;
@@ -141,9 +183,20 @@ namespace Shipping_Label_App.Controllers
                 var user = await _userManager.GetUserAsync(HttpContext.User);
                 labels.ApplicationUser = user;
 
+                var roles = await _userManager.GetRolesAsync(user);
+                var stringrole = "";
+                foreach (var role in roles)
+                {
+                    stringrole = role;
+                }
+
                 _context.Add(labels);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                if(stringrole == "Admin")
+                    return RedirectToAction(nameof(AllLabels));
+                else
+                    return RedirectToAction(nameof(Index));
             }
 
             labels.StatesList = GetStates();
@@ -152,7 +205,7 @@ namespace Shipping_Label_App.Controllers
             labels.Classes = GetClasses();
             return View(labels);
         }
-        [Authorize(Roles = "Admin ,User")]
+        [Authorize(Roles = "Admin")]
         // GET: MakeLabels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -170,6 +223,15 @@ namespace Shipping_Label_App.Controllers
             {
                 return NotFound();
             }
+
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
+            labels.RomeName = stringrole;
             return View(labels);
         }
 
@@ -210,27 +272,50 @@ namespace Shipping_Label_App.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(AllLabels));
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                var roles = await _userManager.GetRolesAsync(user);
+                var stringrole = "";
+                foreach (var role in roles)
+                {
+                    stringrole = role;
+                }
+
+                if (stringrole == "Admin")
+                    return RedirectToAction(nameof(AllLabels));
+                else
+                    return RedirectToAction(nameof(Index));
             }
             return View(labels);
         }
 
         // GET: MakeLabels/Delete/5
         [Authorize(Roles = "Admin ,User")]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
+        public async Task<IActionResult> Delete(int? Id)
+        {          
+
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var labels = await _context.Labels
-                .FirstOrDefaultAsync(m => m.LableID == id);
+            var labels = await _context.Labels.FindAsync(Id);
+            labels.StatesList = GetStates();
+            labels.CountriesList = GetCountries();
+            labels.Providers = GetProviders();
+            labels.Classes = GetClasses();
             if (labels == null)
             {
                 return NotFound();
             }
 
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
+            labels.RomeName = stringrole;
             return View(labels);
         }
 
@@ -242,7 +327,18 @@ namespace Shipping_Label_App.Controllers
             var labels = await _context.Labels.FindAsync(id);
             _context.Labels.Remove(labels);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
+
+            if (stringrole == "Admin")
+                return RedirectToAction(nameof(AllLabels));
+            else
+                return RedirectToAction(nameof(Index));
         }
 
         private bool LabelsExists(int id)

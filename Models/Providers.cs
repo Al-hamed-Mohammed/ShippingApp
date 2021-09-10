@@ -27,5 +27,14 @@ namespace Shipping_Label_App.Models
         [NotMapped]
         public IEnumerable<Classes> Classes { get; set; }
 
+        [Display(Name = "Provider")]
+        public string ProviderWithPrise
+        {
+            get
+            {
+                return ProviderName + " $" + ShipmentCost.ToString();
+            }
+        }
+
     }
 }

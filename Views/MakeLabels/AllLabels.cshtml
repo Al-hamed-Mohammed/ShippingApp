@@ -84,9 +84,9 @@
                                         @Html.DisplayFor(modelItem => item.UserName)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.LableID"><i class="fas fa-edit"></i></a> |
-                                        <a asp-action="Details" asp-route-id="@item.LableID"><i class="far fa-newspaper"></i></a> |
-                                        <a asp-action="Delete" asp-route-id="@item.LableID"><i class="fas fa-trash-alt"></i></a>
+                                        <a asp-action="Edit" asp-route-id="@item.LableID"  title="Edit Label" style="color:blue"><i class="fas fa-edit"></i></a> |
+                                        <a asp-action="Details" asp-route-id="@item.LableID" title="View Label" style="color:green"><i class="far fa-newspaper"></i></a> |
+                                        <a asp-action="Delete" asp-route-id="@item.LableID" title="Delete Label" style="color:red"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 }
