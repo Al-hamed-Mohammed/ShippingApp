@@ -152,5 +152,8 @@ namespace Shipping_Label_App.Models
                 return ToStreet + ", " + ToCity + ", " + ToState + ", " + ToZip;
             }
         }
+
+        [NotMapped]
+        public string RomeName { get; set; }
     }
 }

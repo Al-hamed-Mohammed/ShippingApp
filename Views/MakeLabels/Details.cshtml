@@ -5,177 +5,225 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h1>Details</h1>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <h1>Label Detail</h1>
+            </div>
+            <div class="col-sm-12">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Label Detail</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Label</h3>
+                               
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="LableID" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="ProviderID" class="control-label"></label>
+                                <select asp-for="ProviderID" class="form-control" asp-items="@(new SelectList(Model.Providers,"Id","ProviderWithPrise"))">
+                                    <option value="">Select Provider</option>
+                                </select>
+                                <span asp-validation-for="ProviderID" class="text-danger"></span>
+                            </div>
+                            <hr />
+                        </div>
+                        <div class="col-md-6">
+                            <h3>From</h3>
+                            <hr />
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="FromCountry" class="control-label"></label>
+                                @*<input asp-for="FromCountry" class="form-control" />*@
+                                <select asp-for="FromCountry" class="form-control" asp-items="@(new SelectList(Model.CountriesList,"Name","Name"))"></select>
+                                <span asp-validation-for="FromCountry" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromName" class="control-label"></label>
+                                <input asp-for="FromName" class="form-control" />
+                                <span asp-validation-for="FromName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromStreet" class="control-label"></label>
+                                <input asp-for="FromStreet" class="form-control" />
+                                @*<span asp-validation-for="FromStreet" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromStreet2" class="control-label"></label>
+                                <input asp-for="FromStreet2" class="form-control" />
+                                @*<span asp-validation-for="FromStreet2" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromCity" class="control-label"></label>
+                                <input asp-for="FromCity" class="form-control" />
+                                @*<span asp-validation-for="FromCity" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromZip" class="control-label"></label>
+                                <input asp-for="FromZip" class="form-control" />
+                                @*<span asp-validation-for="FromZip" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromState" class="control-label"></label>
+                                @*<input asp-for="FromState" class="form-control" />*@
+                                <select asp-for="FromState" class="form-control" asp-items="@(new SelectList(Model.StatesList,"Name","Name"))">
+                                    <option value="">Select State</option>
+                                </select>
+                                @*<span asp-validation-for="FromState" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FromPhone" class="control-label"></label>
+                                <input asp-for="FromPhone" class="form-control" />
+                                @*<span asp-validation-for="FromPhone" class="text-danger"></span>*@
+                            </div>
+                        </div>
 
-<div>
-    <h4>Labels</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromCountry)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromCountry)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToCountry)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToCountry)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromStreet)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromStreet)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToStreet)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToStreet)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromStreet2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromStreet2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToStreet2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToStreet2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromCity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromCity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToCity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToCity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromZip)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromZip)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToZip)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToZip)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromState)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromState)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToState)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToState)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FromPhone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FromPhone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ToPhone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ToPhone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProviderID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProviderID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Weight)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Weight)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ClassId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ClassId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SignatureRequired)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SignatureRequired)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SheduleEnable)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SheduleEnable)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SheduleDateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SheduleDateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TrackingNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TrackingNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Datecreated)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Datecreated)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateModified)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateModified)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-    </dl>
-</div>
-<div>
+                        <div class="col-md-6">
+                            <h3>To</h3>
+                            <hr />
+                            <div class="form-group">
+                                <label asp-for="ToCountry" class="control-label"></label>
+                                @*<input asp-for="ToCountry" class="form-control" />*@
+                                <select asp-for="ToCountry" class="form-control" asp-items="@(new SelectList(Model.CountriesList,"Name","Name"))"></select>
+                                @*<span asp-validation-for="ToCountry" class="text-danger"></span>*@
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ToName" class="control-label"></label>
+                                <input asp-for="ToName" class="form-control" />
+                                @*<span asp-validation-for="ToName" class="text-danger"></span>*@
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ToStreet" class="control-label"></label>
+                                <input asp-for="ToStreet" class="form-control" />
+                                @*<span asp-validation-for="ToStreet" class="text-danger"></span>*@
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ToStreet2" class="control-label"></label>
+                                <input asp-for="ToStreet2" class="form-control" />
+                                @*<span asp-validation-for="ToStreet2" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ToCity" class="control-label"></label>
+                                <input asp-for="ToCity" class="form-control" />
+                                @*<span asp-validation-for="ToCity" class="text-danger"></span>*@
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="ToZip" class="control-label"></label>
+                                <input asp-for="ToZip" class="form-control" />
+                                @*<span asp-validation-for="ToZip" class="text-danger"></span>*@
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ToState" class="control-label"></label>
+                                @*<input asp-for="ToState" class="form-control" />*@
+                                <select asp-for="ToState" class="form-control" asp-items="@(new SelectList(Model.StatesList,"Name","Name"))">
+                                    <option value="">Select State</option>
+                                </select>
+                                @*<span asp-validation-for="ToState" class="text-danger"></span>*@
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ToPhone" class="control-label"></label>
+                                <input asp-for="ToPhone" class="form-control" />
+                                @*<span asp-validation-for="ToPhone" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" style="margin-top:40px">
+                            <h4>Other</h4>
+                            <hr />
+                            <div class="form-group">
+                                <label asp-for="TrackingNo" style="color:blue">Tracking No</label>
+                                <input asp-for="TrackingNo" class="form-control" style="border-color:blue" />
+                                @*<span asp-validation-for="TrackingNo" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Weight" class="control-label"></label>
+                                <input asp-for="Weight" class="form-control" />
+                                @*<span asp-validation-for="Weight" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ClassId" class="control-label"></label>
+
+                                <select asp-for="ClassId" class="form-control" asp-items="@(new SelectList(Model.Classes,"Id","ClassName"))">
+                                    <option value="">Select Classes</option>
+                                </select>
+                                @*<span asp-validation-for="ClassId" class="text-danger"></span>*@
+                            </div>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="SignatureRequired" /> @Html.DisplayNameFor(model => model.SignatureRequired)
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Notes" class="control-label"></label>
+                                <input asp-for="Notes" class="form-control" />
+                                @*<span asp-validation-for="Notes" class="text-danger"></span>*@
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" style="margin-top:40px">
+                            <h4>Schedule</h4>
+                            <hr />
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="SheduleEnable" /> @Html.DisplayNameFor(model => model.SheduleEnable)
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SheduleDateTime" class="control-label"></label>
+                                <input asp-for="SheduleDateTime" class="form-control" />
+                                @*<span asp-validation-for="SheduleDateTime" class="text-danger"></span>*@
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @{
+                                if (Model.RomeName != "")
+                                {
+                                    if (Model.RomeName == "Admin")
+                                    {
+                                        <a asp-action="AllLabels" class="btn btn-success">Back to List</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Index" class="btn btn-success">Back to List</a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div>
     <a asp-action="Edit" asp-route-id="@Model.LableID">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
