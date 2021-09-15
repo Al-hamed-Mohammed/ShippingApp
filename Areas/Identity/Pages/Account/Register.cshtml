@@ -2,7 +2,7 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
-    Layout = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -11,89 +11,146 @@
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 <link href="~/StaticAssests/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
 <!-- Theme style -->
-@*<link rel="stylesheet" href="/dist/css/adminlte.min.css">*@
-<section class="vh-100" style="background-color: #508bfc;">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-12 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+<link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+<!-- summernote -->
+<link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+<style>
+    body {
+        background: #007bff;
+        background: linear-gradient(to right, #0062E6, #33AEFF);
+        height: auto !important;
+    }
+</style>
+<div class="wrapper">
 
-                        <h3 class="mb-5">Sign in</h3>
-                        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                            <h4>Create a new account.</h4>
-                            <hr />
-                            <div asp-validation-summary="All" class="text-danger"></div>
-                            <div class="input-group mb-3">
 
-                                <input asp-for="Input.Name" class="form-control" placeholder="Name" />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-user"></span>
-                                    </div>
-                                </div>
-                                <span asp-validation-for="Input.Name" class="text-danger"></span>
+    <section class="content">
+        <div class="container-fluid">
+            <div>
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-sm-12 col-md-12 col-lg-5 p-4  mx-auto">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Sign Up Form</h3>
+
+
                             </div>
-                            <div class="input-group mb-3">
+                            <div class="card-body">
+                                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Create a new account.</h4>
+                                            <hr />
+                                            <div asp-validation-summary="All" class="text-danger"></div>
 
-                                <input asp-for="Input.Email" class="form-control" placeholder="Email" />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-envelope"></span>
-                                    </div>
-                                </div>
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                            </div>
-                            <div class="input-group mb-3">
+                                            <div class="form-group ">
+                                                <label asp-for="Input.Name" class="control-label"></label>
 
-                                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-                                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Retype password" />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
-                        
-                        @*<div class="social-auth-links text-center">
-                                <a href="#" class="btn btn-block btn-primary">
-                                    <i class="fab fa-facebook mr-2"></i>
-                                    Sign up using Facebook
-                                </a>
-                                <a href="#" class="btn btn-block btn-danger">
-                                    <i class="fab fa-google-plus mr-2"></i>
-                                    Sign up using Google+
-                                </a>
-                            </div>*@
+                                                <input asp-for="Input.Name" class="form-control" />
 
-                        <a href="login.html" class="text-center">I already have a membership</a>
+                                                <span asp-validation-for="Input.Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group ">
+
+                                                <label asp-for="Input.Email" class="control-label"></label>
+                                                <input asp-for="Input.Email" class="form-control" />
+
+                                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label asp-for="Input.Password" class="control-label"></label>
+
+                                                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+
+                                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group ">
+                                                <label asp-for="Input.ConfirmPassword" class="control-label"></label>
+                                                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Retype password" />
+
+                                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Register</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                @*<div class="social-auth-links text-center">
+                                        <a href="#" class="btn btn-block btn-primary">
+                                            <i class="fab fa-facebook mr-2"></i>
+                                            Sign up using Facebook
+                                        </a>
+                                        <a href="#" class="btn btn-block btn-danger">
+                                            <i class="fab fa-google-plus mr-2"></i>
+                                            Sign up using Google+
+                                        </a>
+                                    </div>*@
+
+                                <a href="login" class="text-center">I already have a membership</a>
+                            </div>
+
+
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
-        </div>
     </section>
+</div>
 
-        @section Scripts {
-            <partial name="_ValidationScriptsPartial" />
-        }
+@*@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}*@
 
-        <!-- jQuery -->
-        <script src="/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        @*<script src="/dist/js/adminlte.min.js"></script>*@
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<script src="/dist/js/demo.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard.js"></script>

@@ -34,7 +34,14 @@ namespace Shipping_Label_App
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-                options.User.RequireUniqueEmail = false;
+            options.User.RequireUniqueEmail = false;
+                options.Password = new PasswordOptions
+                {
+                    RequireDigit = false,
+                    RequireLowercase = false,
+                    RequireUppercase = false,
+                    RequireNonAlphanumeric = false,
+                };
             })
              .AddEntityFrameworkStores<ApplicationDbContext>()
              .AddDefaultTokenProviders();

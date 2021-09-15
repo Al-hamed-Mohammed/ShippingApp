@@ -29,6 +29,7 @@
 
 
     <link href="~/StaticAssests/assets/css/style.css" rel="stylesheet" />
+   
 </head>
 <body>
     <!-- ======= Header ======= -->
@@ -107,7 +108,7 @@
 
 
                     </ul>
-                    
+
                 </div>
 
 
@@ -118,25 +119,29 @@
 
     <main id="main">
 
-        <section id="services" class="services section-bg" style="background-color:#152B48">
+        <section id="services" class="services section-bg" style="@*background-color:#152B48*@">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2 style="color:white">Features</h2>
+                    <h2 style="">Features</h2>
                 </div>
 
                 <div class="row">
                     <div class="col-xl-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 pt-2" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box" style="border-top-left-radius:45px; border-bottom-right-radius:45px">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                        <div class="icon-box" style="border-radius:45px">
+                            <div class="icon">
+                                <img src="~/StaticAssests/assets/img/Wemakeiteasy.png" alt="a" class="img-fluid ">
+                            </div>
                             <h4><a href="">We Make It Easy</a></h4>
                             <p>Start creating labels and shipping parcels with ease in less than 10 minutes! With our automated label creation system and contact books you can start printing those labels in no time. No fees, markup, or hidden costs. Just guaranteed cheapest rates!</p>
                         </div>
                     </div>
 
                     <div class="col-xl-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 pt-2" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box" style="border-top-left-radius:45px; border-bottom-right-radius:45px">
-                            <div class="icon"><i class="bx bx-money"></i></div>
+                        <div class="icon-box" style="border-radius: 45px">
+                            <div class="icon">
+                                <img src="~/StaticAssests/assets/img/Cheapest-Rates.png" alt="a" class="img-fluid ">
+                            </div>
                             <h4><a href="">Guaranteed CheapestRates.</a></h4>
                             <p>See a better deal? We’ll refund the difference if you find a lower price. Thinking about shipping overseas? We offer a flat discount rate ofup to 90% for both Domestic and International shipments with pre-paid custom charges. Start saving today, risk free. </p>
                         </div>
@@ -144,8 +149,10 @@
                 </div>
                 <div class="row">
                     <div class="col-xl-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 pt-2" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box" style="border-top-left-radius:45px; border-bottom-right-radius:45px">
-                            <div class="icon"><i class="bx bx-user"></i></div>
+                        <div class="icon-box" style="border-radius: 45px">
+                            <div class="icon">
+                                <img src="~/StaticAssests/assets/img/testimonials.png" alt="a" class="img-fluid ">
+                            </div>
                             <h4><a href="">Customer Testimonials</a></h4>
                             <p>
                                 We constantly survey our customers and ask if they’re willing to say a few words.<br />
@@ -156,21 +163,23 @@
                     </div>
 
                     <div class="col-xl-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 pt-2" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="icon-box" style="border-top-left-radius:45px; border-bottom-right-radius:45px">
-                            <div class="icon"><i class="bx bx-support"></i></div>
+                        <div class="icon-box" style="border-radius: 45px">
+                            <div class="icon">
+                                <img src="~/StaticAssests/assets/img/customer-suport.png" alt="a" class="img-fluid ">
+                            </div>
                             <h4><a href="">24/7 Support</a></h4>
                             <p>24/7 Live Chat Support. Having issues, questions or just need some help? Our Customer Service is available all day, all week. Feel free to get in touch with us and we will be happy to help you start shipping asap! </p>
                         </div>
                     </div>
 
                 </div>
-                <div class="details_logos pt-4" style="padding-bottom: 30px;">
+                @*<div class="details_logos pt-4" style="padding-bottom: 30px;">
                     <ul>
                         <li><a href=""><img src="~/StaticAssests/assets/img/fedex.png" alt="a" class="img-fluid"></a></li>
                         <li><a href=""><img src="~/StaticAssests/assets/img/ups.png" alt="a" class="img-fluid"></a></li>
                         <li><a href=""><img src="~/StaticAssests/assets/img/angle.png" alt="a" class="img-fluid"></a></li>
                     </ul>
-                </div>
+                </div>*@
 
             </div>
         </section><!-- End Services Section -->
@@ -206,7 +215,8 @@
                 </div>
 
             </div>
-        </section>--><!-- End Why Us Section -->
+        </section>-->
+        <!-- End Why Us Section -->
         <!-- ======= Skills Section ======= -->
         <!--<section id="skills" class="skills" style="background-color: #12263f;">
             <div class="container" data-aos="fade-up">
@@ -232,7 +242,8 @@
                 </div>
 
             </div>
-        </section>--><!-- End Skills Section -->
+        </section>-->
+        <!-- End Skills Section -->
         <!-- ======= Why Us Section ======= -->
         <!--<section id="why-us" class="why-us section-bg details_section " style="background-color: #142a47;">
             <div class="container-fluid" data-aos="fade-up">
@@ -263,10 +274,11 @@
                 </div>
 
             </div>
-        </section>--><!-- End Why Us Section -->
+        </section>-->
+        <!-- End Why Us Section -->
         <!-- ======= Pricing Section ======= -->
-        <section id="pricing" class="pricing" style="background-color: #12263f;">
-            <div class="container" data-aos="fade-up">
+        <section id="pricing" class="pricing" style="background: rgb(1,206,209); background: linear-gradient(90deg, rgba(1,206,209,1) 0%, rgba(73,104,210,1) 23%, rgba(148,0,212,1) 100%);">
+            <div class="container" data-aos="fade-up" style="padding:0px !important">
 
                 <div class="section-title">
                     <h2 style="color: white;">Our Shipping Carrier</h2>
@@ -277,55 +289,81 @@
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="box">
-                            <h5> <img src="~/StaticAssests/assets/img/usps-logo-vector-5693-128x128.ico" alt="a" class="img-fluid"> USPS</h5>
+                            <img src="~/StaticAssests/assets/img/usps-logo-vector-5693-128x128.ico" alt="a" class="img-fluid ">
+                            <h5><span>USPS</span></h5>
                             <h4><span>For the smaller shipments.</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i> up to 60 lbs</li>
-                                <li><i class="bx bx-check"></i> 97% success rate</li>
-                                <li><i class="bx bx-check"></i> Express & Priority types</li>
+                                <li> up to 60 lbs</li>
+                                <li>Express & Priority types</li>
 
                             </ul>
-                            <div style="text-align:center">
-                                <a href="/Identity/Account/Register" class="buy-btn">Create a Shipment</a>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
                         <div class="box featured">
-                            <h5> <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid"> FedEx USA.</h5>
-                            <h4><span>For larger shipments & speed.</span></h4>
+                            <img src="~/StaticAssests/assets/img/ups.ico" alt="a" class="img-fluid">
+                            <h5><span>UPS</span></h5>
+                            <h4><span>For Small & Large Shipment.</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i>  Up to 120lbs</li>
-                                <li><i class="bx bx-check"></i> 97-99% success rate</li>
-                                <li><i class="bx bx-check"></i> First Overnight, Ground & more</li>
+                                <li> Up to 120lbs</li>
+                                <li>Ground Level Delivery</li>
 
                             </ul>
-                            <div style="text-align:center">
-                                <a href="/Identity/Account/Register" class="buy-btn">Create a Shipment</a>
-                            </div>
+
                         </div>
                     </div>
 
-                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                        <div class="box">
-                            <h5> <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">FedEx Intl.</h5>
 
-                            <h4><span>Success determined by destination.</span></h4>
+                    <div class="col-lg-4 mt-4 mt-lg-0 " data-aos="fade-up" data-aos-delay="200">
+                        <div class="box featured">
+                            <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
+                            <h5><span>FedEx</span></h5>
+                            <h4><span>For larger shipments & speed.</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i>  Up to 120lbs</li>
-                                <li><i class="bx bx-check"></i>85-95% success rate.</li>
-                                <li><i class="bx bx-check"></i> Economy & Priority</li>
+                                <li> Up to 120lbs</li>
+                                <li> First Overnight, Ground & more</li>
 
                             </ul>
-                            <div style="text-align:center">
-                                <a href="/Identity/Account/Register" class="buy-btn">Create a Shipment</a>
-                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
+                        <div class="box">
+                            <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
+                            <h5><span>FedEx Intl</span></h5>
+                            <h4><span>Success determined by destination.</span></h4>
+                            <ul>
+                                <li> Up to 120lbs</li>
+                                <li>Economy & Priority</li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
+                        <div class="box">
+                            <img src="~/StaticAssests/assets/img/royal-mail-logo.png" alt="a" class="img-fluid">
+                            <h5><span>Royal Mail</span></h5>
+                            <h4><span>For Shipment Throughout UK.</span></h4>
+                            <ul>
+                                <li> Up to 20 Kilogram</li>
+                                <li>Economy & Priority</li>
+
+                            </ul>
+
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div style="text-align:center">
+                        <a href="/Identity/Account/Register" class="buy-btn">Create a Shipment</a>
+                    </div>
+                </div>
 
-            </div>
-        </section><!-- End Pricing Section -->
+                </div>
+</section><!-- End Pricing Section -->
         <!-- ======= Testimonials Section ======= -->
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
@@ -428,11 +466,11 @@
 
         </section><!-- End Testimonials Section -->
         <!-- ======= Frequently Asked Questions Section ======= -->
-        <section id="faq" class="faq section-bg">
+        <section id="faq" class="faq section-bg" style="background: rgb(1,206,209); background: linear-gradient(90deg, rgba(1,206,209,1) 0%, rgba(73,104,210,1) 23%, rgba(148,0,212,1) 100%);">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Frequently Asked Questions</h2>
+                    <h2 style="color:wheat">Frequently Asked Questions</h2>
                     @*  <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>*@
                 </div>
 
@@ -446,44 +484,43 @@
                             <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                                 <p>
                                     Starting is easy! Just 3 simple steps:<br />
-                                    Step 1: Create an account here.<br />
+                                    Step 1: Create your FREE account.<br />
                                     Step 2: Weigh your package.<br />
-                                    Step 3: Create a Label, thats it!<br />
-                                    It’s that easy!
+                                    Step 3: Create a Label<br />
+                                    That’s it, it’s that easy!
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="200">
-                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Can I schedule pickup?  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">What can I do about a missing package?  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                             <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    Sure you can, just call up FedEx or USPS after receiving the Label!
+                                    For missing domestic shipments, or international shipments that got lost in transit, you can initiate an international/domesticclaim with the shipping carrier! The shipping company is fully liable for any missing/lost shipments. We suggest first waiting 7 business days from the shipment date (or 30 days for international shipments).
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="300">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">
-                                What can I do about a missing package?
+                                Do I need to create an account with the shipping carrier?
                                 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
                             </a>
                             <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    For missing domestic shipments, or international shipments that haven’t yet left the US, you can file a missing mail search request with the shipping carrier! We suggest first waiting 7 business days from the shipment date (or 30 days for international shipments).
+                                    No, you do not need to create an account regardlessof the shipping carrier. Just print your label and slap it on your package, and you’re good to go!
                                 </p>
                             </div>
                         </li>
 
                         <li data-aos="fade-up" data-aos-delay="400">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
-                                How much does it cost?
+                                What is the cheapest way to send a heavy package?
                                 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
                             </a>
                             <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    It’s 100% free, you do not need to provide any payment information to create a free account, configure your settings, and check out how everything works.<br />
-                                    You can do lots without entering in any payment information, but when you’re ready to purchase postage you will need to provide a payment method.
+                                    For light items, USPS is the cheapest way to ship if that is your goal. For heavier items greater than 2lbs in which delivery time is not a factor, FedEx or UPS Ground is the cheapest way to ship. It's the 2-3 day delivery window where you have to weigh the trade offs.
 
                                 </p>
                             </div>
@@ -491,75 +528,203 @@
 
                         <li data-aos="fade-up" data-aos-delay="500">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
-                                Do I need to create an account with USPS or FedEX?
+                                How can I get free shipping supplies?
                                 <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
                             </a>
                             <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
                                 <p>
-                                    No, you do not need to create an account with any shipping carrier.<br />
-                                    Have more questions? Feel free to reach out to us via live chat. (make live chat text open live chat)
+                                    Depending on the shipping carrier, in most cases they will send you priority and express shipping rate boxes for free.You can also swing by your local post office or  shippingcustomer centers to pick up or purchase additional packaging materials in person.
                                 </p>
                             </div>
                         </li>
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                                Can I use duct tape to ship?
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Do not use masking tape, cellophane tape, duct tape, water-activated paper tapes, string, or wrap the box in paper because it will not provide a strong enough seal.
+                                </p>
+                            </div>
+                        </li>
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                                Where to print when you don't have a printer?
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    If you don't have access to a printer to print a shipping label, you can go to your local post office or schedule a pickup with the shipping carrier and they will print the label for you. Shipping carriers like FedEX, UPS, USPS let you schedule a pickup without labels and the driver will bring your shipping documents.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                                How do you reduce a freight claim?
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Freight shipping damage prevention starts from the moment your crew begins packing items. Secure packing practices, whether it is for boxed goods or pallets of cargo, may be the easiest way to prevent harm to your items during transport.
+                                </p>
+                            </div>
+                        </li>
+
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+
+                                Does FedEx track international packages?
+
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Yes. You can track the status of your international shipments as quickly and easily as you can your U.S. shipments.
+                                </p>
+                            </div>
+                        </li>
+
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                                How many days will FedEx hold a package?
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    A secure FedEx location will hold your package for up to 7 days.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                                Can you stop a FedEx delivery?
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    The window for cancelling a shipment is quite tight, but shipments can be cancelled, using FedEx Ship Manager at fedex.com. ... Select the shipment and click on the "Cancel" button.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                                Why do parcels get stuck in customs?
+                                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                            </a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Often, shipments are held up in customs to check that the contents of the package and the value of the goods were declared accurately. There is little that can be done to stop or speed up these random checks and attempts to such may just be a waste of time.
+                                </p>
+                            </div>
+                        </li>
+
+
 
                     </ul>
                 </div>
 
             </div>
         </section><!-- End Frequently Asked Questions Section -->
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    @* <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>*@
+                </div>
+
+                <div class="row">
 
 
+
+                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch mx-auto">
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" name="name" class="form-control" id="name" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="name">Your Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Message</label>
+                                <textarea class="form-control" name="message" rows="10" required></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+                            <div class="text-center"><button type="submit">Send Message</button></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
 
 
     </main><!-- End #main -->
     <!-- ======= Footer ======= -->
     <footer id="footer">
 
-        <div class="footer-newsletter" style="background-color: #152b48;">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <h4 style="color: white;">Join Us On Telegram</h4>
-                        <p style="color: white;">
-                            You can stay up to date with our services in case of maintenance.
+        @*<div class="footer-newsletter" style="background-color: #152b48;">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <h4 style="color: white;">Join Us On Telegram</h4>
+                            <p style="color: white;">
+                                You can stay up to date with our services in case of maintenance.
 
-                        </p>
-                        <div class="col-lg-12">
-                            <div class="announcemtn_box aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="anncemnt_lft">
-                                    <div class="media">
-                                        <img src="~/StaticAssests/assets/img/paper-plan.png" alt="">
-                                        <div class="media-body">
-                                            <h5>Announcements</h5>
-                                            <p>For all the updates &amp; announcements.</p>
+                            </p>
+                            <div class="col-lg-12">
+                                <div class="announcemtn_box aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000">
+                                    <div class="anncemnt_lft">
+                                        <div class="media">
+                                            <img src="~/StaticAssests/assets/img/paper-plan.png" alt="">
+                                            <div class="media-body">
+                                                <h5>Announcements</h5>
+                                                <p>For all the updates &amp; announcements.</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="anncemnt_rgt">
-                                    <a href="#" target="_blank" class="btn btn_custom"> <img src="~/StaticAssests/assets/img/telegram.svg" alt="a" class="img-fluid"> Join This Telegram</a>
+                                    <div class="anncemnt_rgt">
+                                        <a href="#" target="_blank" class="btn btn_custom"> <img src="~/StaticAssests/assets/img/telegram.svg" alt="a" class="img-fluid"> Join This Telegram</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="announcemtn_box aos-init" data-aos="fade-up" data-aos-duration="2000">
-                                <div class="anncemnt_lft">
-                                    <div class="media">
-                                        <img src="~/StaticAssests/assets/img/paper-plan.png" alt="">
-                                        <div class="media-body">
-                                            <h5>Support</h5>
-                                            <p>For all personal support from our team of representatives.</p>
+                            <div class="col-lg-12">
+                                <div class="announcemtn_box aos-init" data-aos="fade-up" data-aos-duration="2000">
+                                    <div class="anncemnt_lft">
+                                        <div class="media">
+                                            <img src="~/StaticAssests/assets/img/paper-plan.png" alt="">
+                                            <div class="media-body">
+                                                <h5>Support</h5>
+                                                <p>For all personal support from our team of representatives.</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="anncemnt_rgt">
-                                    <a href="#" target="_blank" class="btn btn_custom"> <img src="~/StaticAssests/assets/img/telegram.svg" alt="a" class="img-fluid"> Join This Telegram</a>
+                                    <div class="anncemnt_rgt">
+                                        <a href="#" target="_blank" class="btn btn_custom"> <img src="~/StaticAssests/assets/img/telegram.svg" alt="a" class="img-fluid"> Join This Telegram</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>*@
 
         <div class="footer-top" style="background-color: #061933;">
             <div class="container">
@@ -641,6 +806,10 @@
             </div>
         </div>
     </footer><!-- End Footer -->
+    <div class="fixed-btns">
+            <a class="btn btn-primary">Support Chat</a>
+
+        </div>
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
