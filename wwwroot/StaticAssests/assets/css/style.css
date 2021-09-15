@@ -116,7 +116,7 @@ ol, ul {
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: 15px;
+  bottom: 50px;
   z-index: 996;
   background: #47b2e4;
   width: 40px;
@@ -1492,31 +1492,44 @@ section {
 # Pricing
 --------------------------------------------------------------*/
 .pricing .row {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .pricing .box {
-  padding: 60px 40px;
+  padding: 30px 10px;
   box-shadow: 0 3px 20px -2px rgba(20, 45, 100, 0.1);
   background: #fff;
   height: 100%;
   border-top: 4px solid #fff;
   border-radius: 5px;
 }
+    .pricing .box img {
+        margin-right:auto;
+        margin-left:auto;
+        display:block;
+    }
 
 .pricing h3 {
-  font-weight: 500;
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #37517e;
+   
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #37517e;
 }
-
+.pricing h5 {
+    font-size: 27px;
+    color: #7910f1;
+    font-weight: 400;
+    font-family: "Jost", sans-serif;
+    margin-bottom: 10px;
+    text-align:center;
+}
 .pricing h4 {
   font-size: 48px;
   color: #37517e;
   font-weight: 400;
   font-family: "Jost", sans-serif;
-  margin-bottom: 25px;
+  margin-bottom: 2px;
 }
 
 .pricing h4 sup {
@@ -1527,13 +1540,14 @@ section {
   color: #47b2e4;
   font-size: 18px;
   display: block;
+  text-align:center;
 }
 
 .pricing ul {
   padding: 20px 0;
   list-style: none;
   color: #999;
-  text-align: left;
+  text-align: center;
   line-height: 20px;
 }
 
@@ -2208,4 +2222,15 @@ section {
   #footer .credits {
     padding-top: 4px;
   }
+}
+.fixed-btns{
+    position:fixed;
+    bottom:1%;
+    right:1%;
+    
+}
+.fixed-btns  .template-btn {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    padding: 5px 10px !important;
 }
