@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label asp-for="ProviderID" class="control-label">Shipping carrier</label>
-                                    <select asp-for="ProviderID" class="form-control" asp-items="@(new SelectList(Model.Providers,"Id","ProviderWithPrise"))">
+                                    <select asp-for="ProviderID" class="form-control" asp-items="@(new SelectList(Model.Providers,"Id","ProviderName"))">
                                         <option value="">Select shipping carrier</option>
                                     </select>
                                     <span asp-validation-for="ProviderID" class="text-danger"></span>
