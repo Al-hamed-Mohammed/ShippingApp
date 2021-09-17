@@ -408,7 +408,12 @@ ol, ul {
     /* background: #12263F;*/
     background: rgb(1,206,209);
     background: linear-gradient(90deg, rgba(1,206,209,1) 0%, rgba(73,104,210,1) 23%, rgba(148,0,212,1) 100%);
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    overflow: hidden;
 }
+
 
 #hero .container {
   padding-top: 72px;
@@ -566,6 +571,7 @@ ol, ul {
   text-transform: uppercase;
   padding-top: 5px;
 }
+
 .details_section {
   padding: 70px 0px !important;
   position: relative !important;
@@ -1578,15 +1584,15 @@ section {
 
 .pricing .buy-btn {
   display: inline-block;
-  padding: 12px 35px;
+  padding: 15px 55px;
   border-radius: 50px;
-  color: #47b2e4;
+  color: #0f00cf;
   transition: none;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   font-family: "Jost", sans-serif;
   transition: 0.3s;
-  border: 1px solid #47b2e4;
+  border: 1px solid #021794;
 }
 
 .pricing .buy-btn:hover {
