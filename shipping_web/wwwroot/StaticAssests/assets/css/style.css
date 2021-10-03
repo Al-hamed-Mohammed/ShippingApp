@@ -417,12 +417,13 @@ ol, ul {
     position: relative;
     vertical-align: middle;
     overflow: hidden;
+    padding: 140px 0 120px 0;
 }
 
 
     #hero .container {
-        padding-top: 72px;
-        padding-bottom: 180px !important;
+        padding-top: 0px;
+        padding-bottom: 150px !important;
     }
 
     #hero h1 {
@@ -551,8 +552,8 @@ ol, ul {
 
 @media (max-width: 414px) {
     #hero .container {
-        padding-top: 72px;
-        padding-bottom: 70px !important;
+      /*  padding-top: 72px;
+        padding-bottom: 70px !important;*/
     }
 }
 
@@ -1558,8 +1559,8 @@ section {
 # Pricing
 --------------------------------------------------------------*/
 #pricing {
-    background: rgb(1,206,209);
-    background: linear-gradient( 90deg, rgb(2 211 214 / 44%) 0%, rgb(73 104 210 / 61%) 23%, rgb(148 0 212 / 42%) 100%);
+    background: rgb(138,207,250);
+    background: linear-gradient(0deg, rgba(138,207,250,1) 0%, rgba(252,254,255,1) 100%);
     position: relative;
     background-blend-mode: screen;
 }
