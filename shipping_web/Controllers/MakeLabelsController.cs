@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Shipping_Label_App.Data;
 using Shipping_Label_App.Models;
 using Shipping_Label_App.UtilityClasses;
@@ -112,20 +115,6 @@ namespace Shipping_Label_App.Controllers
         // GET: MakeLabels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //var labels = await _context.Labels
-            //    .FirstOrDefaultAsync(m => m.LableID == id);
-            //if (labels == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return View(labels);
-
             if (id == null)
             {
                 return NotFound();
@@ -146,7 +135,7 @@ namespace Shipping_Label_App.Controllers
         // GET: MakeLabels/Create
         public async Task<IActionResult> Create()
         {
-            var model = new Labels();
+            var model = new LabelVM();
             model.StatesList = GetStates();
             model.CountriesList = GetCountries();
             model.Providers = GetProviders();
@@ -159,7 +148,8 @@ namespace Shipping_Label_App.Controllers
             {
                 stringrole = role;
             }
-            model.RomeName = stringrole;
+            model.RomeName = stringrole;           
+
             return View(model);
         }
 
@@ -169,34 +159,16 @@ namespace Shipping_Label_App.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime")] Labels labels)
-        public async Task<IActionResult> Create([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime")] Labels labels)
+        public async Task<IActionResult> Create([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime")] LabelVM labels)
         {
             if (ModelState.IsValid)
-            {
-                
-                
-                
+            {                                
                 labels.Datecreated = DateTime.Now;
                 labels.DateModified = DateTime.Now;
                 labels.IsActive = false;
                 labels.TrackingNo = null;
-                var user = await _userManager.GetUserAsync(HttpContext.User);
-                labels.ApplicationUser = user;
 
-                var roles = await _userManager.GetRolesAsync(user);
-                var stringrole = "";
-                foreach (var role in roles)
-                {
-                    stringrole = role;
-                }
-
-                _context.Add(labels);
-                await _context.SaveChangesAsync();
-
-                if(stringrole == "Admin")
-                    return RedirectToAction(nameof(AllLabels));
-                else
-                    return RedirectToAction(nameof(Index));
+                return RedirectToAction("Order", labels);
             }
 
             labels.StatesList = GetStates();
@@ -205,6 +177,75 @@ namespace Shipping_Label_App.Controllers
             labels.Classes = GetClasses();
             return View(labels);
         }
+
+        public async Task<IActionResult> Order(LabelVM labels)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            labels.ApplicationUser = user;
+            var roles = await _userManager.GetRolesAsync(user);
+            var stringrole = "";
+            foreach (var role in roles)
+            {
+                stringrole = role;
+            }
+
+            var shippingrates = new ShipingRatesModel();
+            try
+            {
+                string response = await GetShippngRates(labels);
+
+                String remove = "\"remote_area_surcharges\":{},";
+
+                response = response.Replace(remove, "");
+
+                var jsonobj = JsonConvert.DeserializeObject<ShipingRatesModel>(response);
+
+                shippingrates.rates = jsonobj.rates.OrderBy(s => s.total_charge).ToList();
+                shippingrates.status = jsonobj.status;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            double rates = 0;
+
+            foreach(var item in shippingrates.rates)
+            {
+                rates = Convert.ToDouble(item.total_charge);
+                break;
+            }
+
+            var finalrate = (rates * 80) / 100;
+
+            var ourrate = new Rate
+            {
+                currency = "USD",
+                total_charge = finalrate,
+                courier_name = "STOPNSHIP Charges"
+            };
+
+            shippingrates.rates.Insert(0, ourrate);
+
+            var model = new LabelWithRates
+            {
+                labels = labels,
+                ShipingRatesModel = shippingrates
+            };
+
+            //_context.Add(labels);
+            //await _context.SaveChangesAsync();
+
+            //if (stringrole == "Admin")
+            //    return RedirectToAction(nameof(AllLabels));
+            //else
+            //    return RedirectToAction(nameof(Index));
+
+            return View(model);
+        }
+
+
         [Authorize(Roles = "Admin")]
         // GET: MakeLabels/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -379,5 +420,123 @@ namespace Shipping_Label_App.Controllers
         }
 
         #endregion
+
+        private async Task<string> GetShippngRates(LabelVM model)
+        {
+            var itemlist = new List<items>();
+
+            var item = new items
+            {
+                quantity = 1,
+                category = "Mobile Phones",
+                dimensions = new box
+                {
+                    length = 10,
+                    width = 8,
+                    height = 5
+                },
+                description = "Mobile Phones",
+                actual_weight = 10,
+                declared_currency = "USD",
+                declared_customs_value = 500
+            };
+
+            itemlist.Add(item);
+
+            var parcelslist = new List<parcels>();
+            var parcels = new parcels
+            {
+                total_actual_weight = 0.8,
+                box = new box
+                {
+                    length = 10,
+                    width = 8,
+                    height = 5
+                },
+                items = itemlist
+            };
+
+            parcelslist.Add(parcels);
+            var label = new LabelObject
+            {
+                origin_address = new origin_address
+                {
+                    line_1 = "99 Monroe St",
+                    line_2 = "Apartment 1",
+                    postal_code = "07105",
+                    state = "NJ",
+                    city = "Newark"
+                },
+                destination_address = new destination_address
+                {
+                    line_1 = "215 Miller St",
+                    line_2 = "Apartment 1",
+                    postal_code = "07114",
+                    state = "NJ",
+                    city = "Newark",
+                    country_alpha2 = "US"
+                },
+                incoterms = "DDU",
+                insurance = new insurance
+                {
+                    is_insured = false,
+                    insured_amount = 10,
+                    insured_currency = "USD"
+                },
+                courier_selection = new courier_selection
+                {
+                    apply_shipping_rules = true
+                },
+                shipping_settings = new shipping_settings
+                {
+                    units = new units
+                    {
+                        weight = "lb",
+                        dimensions = "cm"
+                    },
+                    output_currency = "USD"
+                },
+                parcels = parcelslist
+
+            };
+
+            string json = JsonConvert.SerializeObject(label);
+            string result = "";
+            // In production code, don't destroy the HttpClient through using, but better reuse an existing instance
+            // https://www.aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/
+            using (var httpClient = new HttpClient())
+            {
+                using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://api.easyship.com/v2/rates"))
+                {
+                    request.Headers.TryAddWithoutValidation("Accept", "text/plain");
+                    request.Headers.TryAddWithoutValidation("Authorization", "Bearer sand_rwJZVpcl9/+D6FKRaXpzgnZcIf8ztG+Et6dRsD+0lYI=");
+
+                    // json = json.Replace(":null,", ": {},");
+
+                    //request.Content = new StringContent("\n{\n     \"origin_address\": {\n          \"line_1\": \"99 Monroe St\",\n          \"line_2\": \"Apartment 1\",\n          \"postal_code\": \"07105\",\n          \"state\": \"NJ\",\n          \"city\": \"Newark\"\n     },\n     \"destination_address\": {\n          \"line_1\": \"215 Miller St\",\n          \"line_2\": \"Apartment 1\",\n          \"state\": \"NJ\",\n          \"city\": \"Newark\",\n          \"postal_code\": \"07114\",\n          \"country_alpha2\": \"US\"\n     },\n     \"incoterms\": \"DDU\",\n     \"insurance\": {\n          \"is_insured\": false,\n          \"insured_amount\": 10,\n          \"insured_currency\": \"USD\"\n     },\n     \"courier_selection\": {\n          \"apply_shipping_rules\": false\n     },\n     \"shipping_settings\": {\n          \"units\": {\n               \"weight\": \"lb\",\n               \"dimensions\": \"cm\"\n          },\n          \"output_currency\": \"USD\"\n     },\n     \"parcels\": [\n          {\n               \"total_actual_weight\": 0.8,\n               \"box\": {\n                    \"length\": 10,\n                    \"width\": 8,\n                    \"height\": 5\n               },\n               \"items\": [\n                    {\n                         \"quantity\": \"1\",\n                         \"dimensions\": {},\n                         \"category\": \"Mobile Phones\",\n                         \"description\": \"Mobile Phones\",\n                         \"actual_weight\": 10,\n                         \"declared_currency\": \"USD\",\n                         \"declared_customs_value\": 500\n                    }\n               ]\n          }\n     ]\n}\n");
+                    request.Content = new StringContent(json);
+                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+
+                    try
+                    {
+                        var response = await httpClient.SendAsync(request);
+                        result = await response.Content.ReadAsStringAsync();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    finally
+                    {
+                        request.Dispose();
+                    }
+                }
+
+
+            }
+
+            return result;
+
+        }
     }
 }
