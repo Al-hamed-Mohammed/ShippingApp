@@ -1,0 +1,292 @@
+﻿@model Shipping_Label_App.UtilityClasses.LabelWithRates
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <h1>Label Detail</h1>
+            </div>
+            <div class="col-sm-12">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Label Detail</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Label</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="labels.LableID" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="labels.ProviderID" class="control-label"></label>
+                                <input type="hidden" asp-for="labels.ProviderID" />
+                                @Html.DisplayFor(m => m.labels.ProviderID)
+                            </div>
+                            <hr />
+                        </div>
+                        <div class="col-md-6" style="padding:5px">
+                            <div style="border:1px solid black; padding:15px">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <h3>From</h3>
+                                        <hr />
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromCountry" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromCountry" />
+                                            @Html.DisplayFor(m => m.labels.FromCountry)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromName" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromName" />
+                                            @Html.DisplayFor(m => m.labels.FromName)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromStreet" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromStreet" />
+                                            @Html.DisplayFor(m => m.labels.FromStreet)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromStreet2" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromStreet2" />
+                                            @Html.DisplayFor(m => m.labels.FromStreet2)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromCity" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromCity" />
+                                            @Html.DisplayFor(m => m.labels.FromCity)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromZip" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromZip" />
+                                            @Html.DisplayFor(m => m.labels.FromZip)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromState" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromState" />
+                                            @Html.DisplayFor(m => m.labels.FromState)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.FromPhone" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.FromPhone" />
+                                            @Html.DisplayFor(m => m.labels.FromPhone)
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <h3>To</h3>
+                                        <hr />
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToCountry" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToCountry" />
+                                            @Html.DisplayFor(m => m.labels.ToCountry)
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToName" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToName" />
+                                            @Html.DisplayFor(m => m.labels.ToName)
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToStreet" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToStreet" />
+                                            @Html.DisplayFor(m => m.labels.ToStreet)
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToStreet2" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToStreet2" />
+                                            @Html.DisplayFor(m => m.labels.ToStreet2)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToCity" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToCity" />
+                                            @Html.DisplayFor(m => m.labels.ToCity)
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToZip" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToZip" />
+                                            @Html.DisplayFor(m => m.labels.ToZip)
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToState" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToState" />
+                                            @Html.DisplayFor(m => m.labels.ToState)
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="labels.ToPhone" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ToPhone" />
+                                            @Html.DisplayFor(m => m.labels.ToPhone)
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="margin-top:40px">
+                                        <h4>Other</h4>
+                                        <hr />
+                                        <div class="form-group">
+                                            <label asp-for="labels.TrackingNo" style="color:blue">Tracking No</label>
+                                            <input type="hidden" asp-for="labels.TrackingNo" />
+                                            @Html.DisplayFor(m => m.labels.TrackingNo)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.Weight" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.Weight" />
+                                            @Html.DisplayFor(m => m.labels.Weight)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.ClassId" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.ClassId" />
+                                            @Html.DisplayFor(m => m.labels.ClassId)
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                @Html.DisplayNameFor(model => model.labels.SignatureRequired)
+                                            </label>
+                                            <input type="hidden" asp-for="labels.SignatureRequired" />
+                                            @Html.DisplayFor(m => m.labels.SignatureRequired)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.Notes" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.Notes" />
+                                            @Html.DisplayFor(m => m.labels.Notes)
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="margin-top:40px">
+                                        <h4>Schedule</h4>
+                                        <hr />
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                @Html.DisplayNameFor(model => model.labels.SheduleEnable)
+                                            </label>
+                                            <input type="hidden" asp-for="labels.SheduleEnable" />
+                                            @Html.DisplayFor(m => m.labels.SheduleEnable)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.SheduleDateTime" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.SheduleDateTime" />
+                                            @Html.DisplayFor(m => m.labels.SheduleDateTime)
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="padding:5px">
+                            <div style="border:1px solid black;">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Select</th>
+                                            <th>Courier Name</th>
+                                            <th>Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            if (Model.ShipingRatesModel.status == "success")
+                                            {
+                                                foreach (var items in Model.ShipingRatesModel.rates)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @{
+                                                                if (items.courier_name.Contains("STOPNSHIP"))
+                                                                {
+                                                                    <input type="radio" checked="checked" />
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input type="radio" disabled/>
+                                                                }
+                                                            }
+
+                                                        </td>
+                                                        <td>
+                                                            @{
+                                                                if (items.courier_name.Contains("USPS"))
+                                                                {
+                                                                    <img src="https://storage.googleapis.com/easyship-assets/app/courier-logos/usps-mini.svg" width="70" height="70" />
+                                                                }
+                                                                else if (items.courier_name.Contains("UPS"))
+                                                                {
+                                                                    <img src="https://storage.googleapis.com/easyship-assets/app/courier-logos/ups-mini.svg" width="70" height="70" />
+                                                                }
+                                                                else if (items.courier_name.Contains("STOPNSHIP"))
+                                                                {
+                                                                    <img src="~/StaticAssests/assets/img/heropng2.png" width="70" height="70" />
+                                                                }
+                                                            }
+                                                            @items.courier_name
+                                                        </td>
+                                                        <td>
+                                                            $@items.total_charge.ToString("0.00")
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="2">No shipment carrer found for this address</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @{
+                                if (Model.labels.RomeName != "")
+                                {
+                                    if (Model.labels.RomeName == "Admin")
+                                    {
+                                        <a asp-action="AllLabels" class="btn btn-success">Back to List</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Index" class="btn btn-success">Back to List</a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a asp-action="Index" class="btn btn-success">Back to List</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div>
+        <a asp-action="Edit" asp-route-id="@Model.LableID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@
