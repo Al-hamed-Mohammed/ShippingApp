@@ -159,7 +159,7 @@ namespace Shipping_Label_App.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime")] Labels labels)
-        public async Task<IActionResult> Create([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime")] LabelVM labels)
+        public async Task<IActionResult> Create([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,Length,Width,Height")] LabelVM labels)
         {
             if (ModelState.IsValid)
             {                                
@@ -242,9 +242,76 @@ namespace Shipping_Label_App.Controllers
             //else
             //    return RedirectToAction(nameof(Index));
 
+            ViewBag.RatesList = shippingrates;
+
             return View(model);
         }
 
+        [HttpPost, ActionName("Order")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OrderPost([Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,Length,Width,Height,CarrierName,ShipingRate")] LabelVM labels, string couriername, string totalcharges)
+        {
+            if (ModelState.IsValid)
+            {
+                labels.Datecreated = DateTime.Now;
+                labels.DateModified = DateTime.Now;
+                labels.IsActive = false;
+                labels.TrackingNo = null;
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
+                var label = new Labels
+                {
+                    LableID = labels.LableID,
+                    FromCountry = labels.FromCountry,
+                    ToCountry = labels.ToCountry,
+                    FromName = labels.FromName,
+                    ToName = labels.ToName,
+                    FromCity = labels.FromCity,
+                    FromStreet = labels.FromStreet,
+                    ToStreet = labels.ToStreet,
+                    FromStreet2 = labels.FromStreet2,
+                    ToStreet2 = labels.ToStreet2,
+                    ToCity = labels.ToCity,
+                    FromState = labels.FromState,
+                    ToState = labels.ToState,
+                    Provider = labels.Provider,
+                    Class = labels.Class,
+                    FromZip = labels.FromZip,
+                    ToZip = labels.ToZip,
+                    TrackingNo = labels.TrackingNo,
+                    UserId = user.Id,
+                    FromPhone = labels.FromPhone,
+                    ToPhone = labels.ToPhone,
+                    ProviderID = labels.ProviderID,
+                    ClassId = labels.ClassId,
+                    Weight = labels.Weight,
+                    Length = labels.Length,
+                    Width = labels.Width,
+                    Height = labels.Height,
+                    SheduleEnable = labels.SheduleEnable,
+                    SheduleDateTime = labels.SheduleDateTime,
+                    CarrierName = couriername,
+                    ShipingRate = Convert.ToDouble(totalcharges)
+                };
+
+                _context.Labels.Add(label);
+                await _context.SaveChangesAsync();
+
+                
+                var roles = await _userManager.GetRolesAsync(user);
+                var stringrole = "";
+                foreach (var role in roles)
+                {
+                    stringrole = role;
+                }
+
+                if (stringrole == "Admin")
+                    return RedirectToAction(nameof(AllLabels));
+                else
+                    return RedirectToAction(nameof(Index));
+            }         
+            return View(labels);
+        }
 
         [Authorize(Roles = "Admin")]
         // GET: MakeLabels/Edit/5
@@ -282,7 +349,7 @@ namespace Shipping_Label_App.Controllers
         //LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,TrackingNo,Datecreated,DateModified,IsActive
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,TrackingNo,Datecreated,DateModified,IsActive")] Labels labels)
+        public async Task<IActionResult> Edit(int id, [Bind("LableID,FromCountry,ToCountry,FromName,ToName,FromStreet,ToStreet,FromStreet2,ToStreet2,FromCity,ToCity,FromZip,ToZip,FromState,ToState,FromPhone,ToPhone,ProviderID,Weight,ClassId,SignatureRequired,Notes,SheduleEnable,SheduleDateTime,TrackingNo,Datecreated,DateModified,IsActive,Length,Width,Height,CarrierName,ShipingRate")] Labels labels)
         {
             if (id != labels.LableID)
             {
@@ -431,9 +498,9 @@ namespace Shipping_Label_App.Controllers
                 category = "Mobile Phones",
                 dimensions = new box
                 {
-                    length = 10,
-                    width = 8,
-                    height = 5
+                    length =model.Length,
+                    width = model.Width,
+                    height = model.Height
                 },
                 description = "Mobile Phones",
                 actual_weight = 10,
@@ -446,12 +513,12 @@ namespace Shipping_Label_App.Controllers
             var parcelslist = new List<parcels>();
             var parcels = new parcels
             {
-                total_actual_weight = 0.8,
+                total_actual_weight = model.Weight,
                 box = new box
                 {
-                    length = 10,
-                    width = 8,
-                    height = 5
+                    length = model.Length,
+                    width = model.Width,
+                    height = model.Height
                 },
                 items = itemlist
             };
@@ -461,19 +528,19 @@ namespace Shipping_Label_App.Controllers
             {
                 origin_address = new origin_address
                 {
-                    line_1 = "99 Monroe St",
-                    line_2 = "Apartment 1",
-                    postal_code = "07105",
-                    state = "NJ",
-                    city = "Newark"
+                    line_1 = model.FromStreet,
+                    line_2 = model.FromStreet2,
+                    postal_code = model.FromZip,
+                    state = model.FromState,
+                    city = model.FromCity
                 },
                 destination_address = new destination_address
                 {
-                    line_1 = "215 Miller St",
-                    line_2 = "Apartment 1",
-                    postal_code = "07114",
-                    state = "NJ",
-                    city = "Newark",
+                    line_1 = model.ToStreet,
+                    line_2 = model.ToStreet2,
+                    postal_code = model.ToZip,
+                    state = model.ToState,
+                    city = model.ToCity,
                     country_alpha2 = "US"
                 },
                 incoterms = "DDU",

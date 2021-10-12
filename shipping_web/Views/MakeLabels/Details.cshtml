@@ -26,7 +26,7 @@
         <div class="card card-default">
             <div class="card-header">
                 <h3 class="card-title">Label</h3>
-                               
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -159,9 +159,41 @@
                                 @*<span asp-validation-for="TrackingNo" class="text-danger"></span>*@
                             </div>
                             <div class="form-group">
-                                <label asp-for="Weight" class="control-label"></label>
-                                <input asp-for="Weight" class="form-control" />
-                                @*<span asp-validation-for="Weight" class="text-danger"></span>*@
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label asp-for="Weight" class="control-label"></label>
+                                        <input asp-for="Weight" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="Length" class="control-label"></label>
+                                        <input asp-for="Length" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="Width" class="control-label"></label>
+                                        <input asp-for="Width" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="Height" class="control-label"></label>
+                                        <input asp-for="Height" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label asp-for="CarrierName" class="control-label"></label>
+                                        <input asp-for="CarrierName" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="ShipingRate" class="control-label"></label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background-color: #dfdfdf">$</span>
+                                            </div>
+                                            <input asp-for="ShipingRate" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label asp-for="ClassId" class="control-label"></label>
@@ -224,6 +256,6 @@
 </section>
 
 @*<div>
-    <a asp-action="Edit" asp-route-id="@Model.LableID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>*@
+        <a asp-action="Edit" asp-route-id="@Model.LableID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@

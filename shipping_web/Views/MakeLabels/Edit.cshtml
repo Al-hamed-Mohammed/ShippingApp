@@ -160,21 +160,53 @@
                                 @*<span asp-validation-for="TrackingNo" class="text-danger"></span>*@
                             </div>
                             <div class="form-group">
-                                <label asp-for="Weight" class="control-label"></label>
-                                <input asp-for="Weight" class="form-control" />
-                                @*<span asp-validation-for="Weight" class="text-danger"></span>*@
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label asp-for="Weight" class="control-label"></label>
+                                        <input asp-for="Weight" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="Width" class="control-label"></label>
+                                        <input asp-for="Width" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="Height" class="control-label"></label>
+                                        <input asp-for="Height" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="Length" class="control-label"></label>
+                                        <input asp-for="Length" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label asp-for="CarrierName" class="control-label"></label>
+                                        <input asp-for="CarrierName" class="form-control" />
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label asp-for="ShipingRate" class="control-label"></label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background-color: #dfdfdf">$</span>
+                                            </div>
+                                            <input asp-for="ShipingRate" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label asp-for="ClassId" class="control-label"></label>
 
-                                <select asp-for="ClassId" class="form-control"  asp-items="@(new SelectList(Model.Classes,"Id","ClassName"))">
+                                <select asp-for="ClassId" class="form-control" asp-items="@(new SelectList(Model.Classes,"Id","ClassName"))">
                                     <option value="">Select Classes</option>
                                 </select>
                                 @*<span asp-validation-for="ClassId" class="text-danger"></span>*@
                             </div>
                             <div class="form-group form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input"   asp-for="SignatureRequired" /> @Html.DisplayNameFor(model => model.SignatureRequired)
+                                    <input class="form-check-input" asp-for="SignatureRequired" /> @Html.DisplayNameFor(model => model.SignatureRequired)
                                 </label>
                             </div>
                             <div class="form-group">

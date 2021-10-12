@@ -90,8 +90,8 @@ namespace Shipping_Label_App.Models
         // Other secion fields here
 
         [Required]
-        [Display(Name = "Weight (120 lbs max)")]
-        public int Weight { get; set; }
+        [Display(Name = "Weight (120 lbs max)")]        
+        public double Weight { get; set; }
 
         [Required]
         [Display(Name = "Class")]
@@ -155,5 +155,21 @@ namespace Shipping_Label_App.Models
 
         [NotMapped]
         public string RomeName { get; set; }
+
+        [Required]
+        public double Length { get; set; }
+
+        [Required]
+        public double Width { get; set; }
+
+        [Required]
+        public double Height { get; set; }
+
+        [Required]
+        
+        public string CarrierName { get; set; }
+
+        [Required]
+        public double ShipingRate { get; set; }
     }
 }

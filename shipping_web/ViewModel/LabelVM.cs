@@ -1,4 +1,5 @@
-﻿using Shipping_Label_App.Models;
+﻿using Shipping_Label_App.CustomerValidatorClass;
+using Shipping_Label_App.Models;
 using Shipping_Label_App.UtilityClasses;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,7 @@ namespace Shipping_Label_App.ViewModel
         // Other secion fields here
 
         [Required]
+        [RequiredGreaterThanZeroForDouble]
         [Display(Name = "Weight (120 lbs max)")]
         public int Weight { get; set; }
 
@@ -160,5 +162,20 @@ namespace Shipping_Label_App.ViewModel
         }
         [NotMapped]
         public string RomeName { get; set; }
+
+        [Required]
+        [RequiredGreaterThanZeroForDouble]
+        public double Length { get; set; }
+
+        [Required]
+        [RequiredGreaterThanZeroForDouble]
+        public double Width { get; set; }
+
+        [Required]
+        [RequiredGreaterThanZeroForDouble]
+        public double Height { get; set; }
+
+        public string courier_name { get; set; }
+        public double total_charge { get; set; }
     }
 }
