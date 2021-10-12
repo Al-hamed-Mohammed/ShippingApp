@@ -64,9 +64,9 @@ namespace Shipping_Label_App.UtilityClasses
     #region Parcel section
     public class box
     {
-        public int length { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
+        public double length { get; set; }
+        public double width { get; set; }
+        public double height { get; set; }
     }
 
     public class items
@@ -75,7 +75,7 @@ namespace Shipping_Label_App.UtilityClasses
         public box dimensions { get; set; }
         public string category { get; set; }
         public string description { get; set; }
-        public int actual_weight { get; set; }
+        public double actual_weight { get; set; }
         public string declared_currency { get; set; }
         public int declared_customs_value { get; set; }
     }

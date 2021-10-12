@@ -30,7 +30,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form asp-action="Edit">
+                <form asp-action="Order">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="labels.LableID" />
                     <div class="row">
@@ -158,6 +158,21 @@
                                             @Html.DisplayFor(m => m.labels.Weight)
                                         </div>
                                         <div class="form-group">
+                                            <label asp-for="labels.Length" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.Length" />
+                                            @Html.DisplayFor(m => m.labels.Length)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.Width" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.Width" />
+                                            @Html.DisplayFor(m => m.labels.Width)
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="labels.Height" class="control-label"></label>
+                                            <input type="hidden" asp-for="labels.Height" />
+                                            @Html.DisplayFor(m => m.labels.Height)
+                                        </div>
+                                        <div class="form-group">
                                             <label asp-for="labels.ClassId" class="control-label"></label>
                                             <input type="hidden" asp-for="labels.ClassId" />
                                             @Html.DisplayFor(m => m.labels.ClassId)
@@ -218,10 +233,12 @@
                                                                 if (items.courier_name.Contains("STOPNSHIP"))
                                                                 {
                                                                     <input type="radio" checked="checked" />
+                                                                    <input type="hidden" value=@items.courier_name name="couriername">
+                                                                    <input type="hidden" value=@items.total_charge name="totalcharges">
                                                                 }
                                                                 else
                                                                 {
-                                                                    <input type="radio" disabled/>
+                                                                    <input type="radio" disabled />
                                                                 }
                                                             }
 
@@ -261,6 +278,7 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <input type="submit" value="Order" class="btn btn-primary" />
                             @{
                                 if (Model.labels.RomeName != "")
                                 {
