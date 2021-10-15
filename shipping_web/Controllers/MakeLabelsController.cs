@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Shipping_Label_App.Data;
 using Shipping_Label_App.Models;
@@ -24,14 +25,17 @@ namespace Shipping_Label_App.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger<HomeController> _logger;
 
         public MakeLabelsController(ApplicationDbContext context, 
             IWebHostEnvironment webHostEnvironment, 
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            ILogger<HomeController> logger)
         {
             _userManager = userManager;
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _logger = logger;
         }
 
         [Authorize(Roles = "Admin")]
@@ -206,42 +210,40 @@ namespace Shipping_Label_App.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError(ex.ToString());
             }
 
             double rates = 0;
 
-            foreach(var item in shippingrates.rates)
+            try
             {
-                rates = Convert.ToDouble(item.total_charge);
-                break;
+                foreach (var item in shippingrates.rates)
+                {
+                    rates = Convert.ToDouble(item.total_charge);
+                    break;
+                }
+                var finalrate = (rates * 80) / 100;
+
+                var ourrate = new Rate
+                {
+                    currency = "USD",
+                    total_charge = finalrate,
+                    courier_name = "STOPNSHIP Charges"
+                };
+
+                shippingrates.rates.Insert(0, ourrate);
             }
-
-            var finalrate = (rates * 80) / 100;
-
-            var ourrate = new Rate
+            catch (Exception ex)
             {
-                currency = "USD",
-                total_charge = finalrate,
-                courier_name = "STOPNSHIP Charges"
-            };
-
-            shippingrates.rates.Insert(0, ourrate);
+                _logger.LogError(ex.ToString());
+            }
 
             var model = new LabelWithRates
             {
                 labels = labels,
                 ShipingRatesModel = shippingrates
             };
-
-            //_context.Add(labels);
-            //await _context.SaveChangesAsync();
-
-            //if (stringrole == "Admin")
-            //    return RedirectToAction(nameof(AllLabels));
-            //else
-            //    return RedirectToAction(nameof(Index));
-
+            
             ViewBag.RatesList = shippingrates;
 
             return View(model);
@@ -564,7 +566,6 @@ namespace Shipping_Label_App.Controllers
                     output_currency = "USD"
                 },
                 parcels = parcelslist
-
             };
 
             string json = JsonConvert.SerializeObject(label);
@@ -576,11 +577,9 @@ namespace Shipping_Label_App.Controllers
                 using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://api.easyship.com/v2/rates"))
                 {
                     request.Headers.TryAddWithoutValidation("Accept", "text/plain");
-                    request.Headers.TryAddWithoutValidation("Authorization", "Bearer sand_rwJZVpcl9/+D6FKRaXpzgnZcIf8ztG+Et6dRsD+0lYI=");
-
-                    // json = json.Replace(":null,", ": {},");
-
-                    //request.Content = new StringContent("\n{\n     \"origin_address\": {\n          \"line_1\": \"99 Monroe St\",\n          \"line_2\": \"Apartment 1\",\n          \"postal_code\": \"07105\",\n          \"state\": \"NJ\",\n          \"city\": \"Newark\"\n     },\n     \"destination_address\": {\n          \"line_1\": \"215 Miller St\",\n          \"line_2\": \"Apartment 1\",\n          \"state\": \"NJ\",\n          \"city\": \"Newark\",\n          \"postal_code\": \"07114\",\n          \"country_alpha2\": \"US\"\n     },\n     \"incoterms\": \"DDU\",\n     \"insurance\": {\n          \"is_insured\": false,\n          \"insured_amount\": 10,\n          \"insured_currency\": \"USD\"\n     },\n     \"courier_selection\": {\n          \"apply_shipping_rules\": false\n     },\n     \"shipping_settings\": {\n          \"units\": {\n               \"weight\": \"lb\",\n               \"dimensions\": \"cm\"\n          },\n          \"output_currency\": \"USD\"\n     },\n     \"parcels\": [\n          {\n               \"total_actual_weight\": 0.8,\n               \"box\": {\n                    \"length\": 10,\n                    \"width\": 8,\n                    \"height\": 5\n               },\n               \"items\": [\n                    {\n                         \"quantity\": \"1\",\n                         \"dimensions\": {},\n                         \"category\": \"Mobile Phones\",\n                         \"description\": \"Mobile Phones\",\n                         \"actual_weight\": 10,\n                         \"declared_currency\": \"USD\",\n                         \"declared_customs_value\": 500\n                    }\n               ]\n          }\n     ]\n}\n");
+                    //request.Headers.TryAddWithoutValidation("Authorization", "Bearer sand_rwJZVpcl9/+D6FKRaXpzgnZcIf8ztG+Et6dRsD+0lYI=");
+                    request.Headers.TryAddWithoutValidation("Authorization", "Bearer prod_LEpHYDF8oKqUGmNKEkiS7yURvdc+9j6VdJWGS7Shyok=");
+                                        
                     request.Content = new StringContent(json);
                     request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
 
@@ -591,19 +590,15 @@ namespace Shipping_Label_App.Controllers
                     }
                     catch (Exception ex)
                     {
-
+                        _logger.LogError(ex.ToString());
                     }
                     finally
                     {
                         request.Dispose();
                     }
                 }
-
-
             }
-
             return result;
-
         }
     }
 }
