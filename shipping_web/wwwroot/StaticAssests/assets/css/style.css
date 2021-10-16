@@ -744,7 +744,6 @@ ol, ul {
     }
 
 .circles {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -753,7 +752,6 @@ ol, ul {
 }
 
     .circles li {
-        position: absolute;
         display: block;
         list-style: none;
         width: 20px;
@@ -761,6 +759,7 @@ ol, ul {
         background: rgba(255, 255, 255, 0.2);
         animation: animate 25s linear infinite;
         bottom: -150px;
+        position: absolute;
     }
 
         .circles li:nth-child(1) {
@@ -877,6 +876,17 @@ ol, ul {
         border-radius: 50%;
     }
 }
+.target {
+    font-size: 14px;
+    transition-property: font-size;
+    transition-duration: 4s;
+}
+
+    .target:hover {
+        font-size: 36px;
+        color: #4d0543;
+    }
+
 
 /*--------------------------------------------------------------
 # Sections General
