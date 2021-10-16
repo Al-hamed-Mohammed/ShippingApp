@@ -49,7 +49,7 @@
                                 <hr />
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
-                                    <label asp-for="FromCountry" class="control-label"></label>
+                                    <label asp-for="FromCountry" class="control-label">From Country</label>
                                     @*<input asp-for="FromCountry" class="form-control" />*@
                                     <select asp-for="FromCountry" class="form-control" asp-items="@(new SelectList(Model.CountriesList,"Name","Name"))"></select>
                                     <span asp-validation-for="FromCountry" class="text-danger"></span>
@@ -98,7 +98,7 @@
                                 <h3>To</h3>
                                 <hr />
                                 <div class="form-group">
-                                    <label asp-for="ToCountry" class="control-label"></label>
+                                    <label asp-for="ToCountry" class="control-label"> To Country</label>
                                     @*<input asp-for="ToCountry" class="form-control" />*@
                                     <select asp-for="ToCountry" class="form-control" asp-items="@(new SelectList(Model.CountriesList,"Name","Name"))"></select>
                                     <span asp-validation-for="ToCountry" class="text-danger"></span>

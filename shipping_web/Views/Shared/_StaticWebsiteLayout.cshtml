@@ -12,8 +12,8 @@
 
 
     <!-- Favicons -->
-    <link href="~/StaticAssests/assets/img/favicon.png" rel="icon">
-    <link href="~/StaticAssests/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    @*<link href="~/StaticAssests/assets/img/favicon.png" rel="icon">
+    <link href="~/StaticAssests/assets/img/apple-touch-icon.png" rel="apple-touch-icon">*@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -62,7 +62,7 @@
         </div>
     </header><!-- End Header -->
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column align-items-center" >
+    <section id="hero" class="d-flex flex-column align-items-center">
 
         <div class="container ">
             <div class="row">
@@ -73,8 +73,8 @@
                     </h1>
                     <p style="color:white">Cut your shipping expenses with a flat discount rate of up to 92%</p>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started scrollto">Ship Your First Order</a>
-                        <a href="#why-us" class="glightbox btn-watch-video"><i class="bi bi-info"></i><span>Learn More</span></a>
+                        <a href='/Identity/Account/Login' class="btn-get-started scrollto">Ship Your First Order</a>
+                        <a href='/#services' class=" btn-watch-video"><i class="bi bi-info"></i><span>Learn More</span></a>
                     </div>
                     <div class="hero_btm_area">
                         <div class="hero_btm">
@@ -96,33 +96,35 @@
                     <img src="~/StaticAssests/assets/img/heropng2.png" class="img-fluid animated" alt="">
 
                 </div>
-                <div class="area">
-                    <ul class="circles">
-                        <li></li>
-
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-
-
-                    </ul>
-
-                </div>
-
-
-
             </div>
+
         </div>
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+
+
+            </ul>
+
+        </div>
+
+
+
+
 
         <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#f3f5fa" fill-opacity="1" d="M0,128L30,122.7C60,117,120,107,180,128C240,149,300,203,360,192C420,181,480,107,540,90.7C600,75,660,117,720,160C780,203,840,245,900,218.7C960,192,1020,96,1080,80C1140,64,1200,128,1260,160C1320,192,1380,192,1410,192L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
@@ -135,7 +137,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2 style="">Features</h2>
+                    <h2 class="target">Features</h2>
                 </div>
 
                 <div class="row">
@@ -187,7 +189,7 @@
                 </div>
                 @*<div class="details_logos pt-4" style="padding-bottom: 30px;">
                         <ul>
-                            <li><a href=""><img src="~/StaticAssests/assets/img/fedex.png" alt="a" class="img-fluid"></a></li>
+                            <li><a href=""><img src="~/StaticAssests/assets/img/fedex.png"   alt="a" class="img-fluid"></a></li>
                             <li><a href=""><img src="~/StaticAssests/assets/img/ups.png" alt="a" class="img-fluid"></a></li>
                             <li><a href=""><img src="~/StaticAssests/assets/img/angle.png" alt="a" class="img-fluid"></a></li>
                         </ul>
@@ -200,14 +202,14 @@
             <div class="container" data-aos="fade-up" style="padding:0px !important">
 
                 <div class="section-title">
-                    <h2 style="color: #174af1;">Our Shipping Carriers</h2>
+                    <h2  class="target">Our Shipping Carriers</h2>
                     @*<p style="color: white;">Price is adjusted by volume of orders from the user, here's the standard rates.</p>*@
                 </div>
 
                 <div class="row">
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="box">
+                        <div class="box featured">
                             <img src="~/StaticAssests/assets/img/usps-logo-vector-5693-128x128.ico" alt="a" class="img-fluid ">
                             <h5><span>USPS</span></h5>
                             <h4><span>For The Smaller Shipments.</span></h4>
@@ -216,7 +218,7 @@
                                 <li>Express & Priority Mail</li>
 
                             </ul>
-
+                              
                         </div>
                     </div>
                     <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
@@ -236,6 +238,22 @@
 
                     <div class="col-lg-4 mt-4 mt-lg-0 " data-aos="fade-up" data-aos-delay="200">
                         <div class="box featured">
+                            <img src="~/StaticAssests/assets/img/ups.ico" alt="a" class="img-fluid">
+                            <h5><span>UPS EU</span></h5>
+                            <h4><span>For European Shipments.</span></h4>
+                            <ul>
+                                <li>
+                                    Express Shipping
+                                </li>
+                                <li>Only for European Countries</li>
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-4 mt-lg-0 " data-aos="fade-up" data-aos-delay="200">
+                        <div class="box featured">
                             <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
                             <h5><span>FedEx</span></h5>
                             <h4><span>For Larger Shipments & Speed.</span></h4>
@@ -248,10 +266,9 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-2 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
-                    </div>
+
                     <div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
-                        <div class="box">
+                        <div class="box featured">
                             <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
                             <h5><span>FedEx Intl</span></h5>
                             <h4><span>For International Shipments.</span></h4>
@@ -265,7 +282,7 @@
                     </div>
 
                     <div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
-                        <div class="box">
+                        <div class="box featured">
                             <img src="~/StaticAssests/assets/img/royal-mail-logo.png" alt="a" class="img-fluid">
                             <h5><span>Royal Mail</span></h5>
                             <h4><span>For Shipments Throughout UK.</span></h4>
@@ -277,8 +294,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-2 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
-                    </div>
+
                 </div>
                 <div class="row">
                     <div style="text-align:center;">
@@ -297,11 +313,12 @@
         <section id="testimonials" class="testimonials">
 
             <div class="container" data-aos="fade-up">
-
-                <header class="section-header">
-                    <h2>Testimonials</h2>
+                <div class="section-title">
+                    <h2 class="target">Testimonials</h2>
                     <p>What they are saying about us</p>
-                </header>
+                </div>
+
+              
 
                 <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper">
@@ -399,7 +416,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2 style="color:#174af1">Frequently Asked Questions</h2>
+                    <h2  class="target">Frequently Asked Questions</h2>
                     @*  <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>*@
                 </div>
 
@@ -681,8 +698,11 @@
 
                     <div class="col-lg-6 col-sm-12">
                         <div class="ftr_logo">
-                            <h6><img src="~/StaticAssests/assets/img/truck-ftr.png" alt="aa" class="img-fluid"> Delivery Service</h6>
-                            <p>We've operated our business since end of 2019, and we provide high quality shipping labels for your personal usage, or for your business to cut expenses and increase profit &amp; speed of deliveries.</p>
+                            <h6><img src="~/StaticAssests/assets/img/truck-ftr.png" alt="aa" class="img-fluid"> About Us</h6>
+                            <p>
+                                We strive to provide simplicity throughout our website and a seamless shipping experience, by offering the deepest commercial discounts guided by the largest shipping companies such as UPS, FedEX and USPS whom we consider our leaders and constantly inspire us to deliver the best quality and experience for our shippers.
+                                We power everything leading up to the moment of delight when a package arrives in the consumer’s hand.
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
