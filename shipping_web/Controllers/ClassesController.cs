@@ -63,6 +63,7 @@ namespace Shipping_Label_App.Controllers
         {
             if (ModelState.IsValid)
             {
+                classes.DateCreated = DateTime.Now;
                 _context.Add(classes);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -104,6 +105,7 @@ namespace Shipping_Label_App.Controllers
             {
                 try
                 {
+                    classes.DateModified = DateTime.Now;
                     _context.Update(classes);
                     await _context.SaveChangesAsync();
                 }

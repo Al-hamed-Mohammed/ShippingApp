@@ -59,12 +59,13 @@ namespace Shipping_Label_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProviderName,ShipmentCost,DateCreated,DateModified")] Providers providers)
+        public async Task<IActionResult> Create([Bind("Id,ProviderName,ShipmentCost,Maxweight,DateCreated,DateModified")] Providers providers)
         {
-            
             if (ModelState.IsValid)
             {
+                providers.DateCreated = DateTime.Now;
                 _context.Add(providers);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -93,17 +94,17 @@ namespace Shipping_Label_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProviderName,ShipmentCost,DateCreated,DateModified")] Providers providers)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProviderName,ShipmentCost,Maxweight,DateCreated,DateModified")] Providers providers)
         {
             if (id != providers.Id)
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    providers.DateModified = DateTime.Now;
                     _context.Update(providers);
                     await _context.SaveChangesAsync();
                 }
@@ -156,6 +157,26 @@ namespace Shipping_Label_App.Controllers
         private bool ProvidersExists(int id)
         {
             return _context.providers.Any(e => e.Id == id);
+        }
+        public JsonResult GetMaxWeight(int id)
+        {
+            var prodviders  = _context.providers.Find(id);
+            var maxweight = prodviders.Maxweight;
+            return Json(new { message = maxweight.ToString() });
+        }
+        public JsonResult GetClassesByProviders(int id)
+        {
+            var classes = (from pc in _context.ProviderClasses
+                            join p in _context.providers on pc.ProviderID equals p.Id
+                            join c in _context.classes on pc.ClassID equals c.Id
+                            where p.Id == id
+                            select new
+                            {
+                                c.Id,
+                                c.ClassName
+                            }).ToList();
+
+            return Json(new SelectList(classes, "Id", "ClassName"));
         }
     }
 }

@@ -157,7 +157,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label asp-for="Weight" class="control-label"></label>
+                                            <label id="lblweight" class="control-label">Weight</label>
                                             <input asp-for="Weight" class="form-control" />
                                             <span asp-validation-for="Weight" class="text-danger"></span>
                                         </div>
@@ -244,6 +244,28 @@
 <div>
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    $("#ProviderID").change(function () {
+        var url = '@Url.Content("~/")' + "Providers/GetMaxWeight";
+        var ddlsource = "#ProviderID";
+        $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
+
+            $("#lblweight").text( "Weight(" + data.message+ " max)");
+        })
+        var url2 = '@Url.Content("~/")' + "Providers/GetClassesByProviders";
+        $.getJSON(url2, { id: $(ddlsource).val() }, function (data) {
+            var items = '';
+            $('#ClassId').empty();
+            $.each(data, function (i, row) {
+                items += "  <option value='" + row.value + "'>" + row.text + "</option>"
+            });
+            console.log(items);
+            $('#ClassId').html(items);
+        })
+    });
+
+</script>
 
 @*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
