@@ -21,6 +21,10 @@ namespace Shipping_Label_App.Models
         public int ShipmentCost { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
+        [Required]
+        [MaxLength(50)]
+        [Display(Name = "Maxweight")]
+        public string Maxweight { get; set; }
 
         public virtual ICollection<ProviderClasses> ProviderClasses { get; set; }
 
