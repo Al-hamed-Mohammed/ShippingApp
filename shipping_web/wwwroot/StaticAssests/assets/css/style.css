@@ -11,6 +11,14 @@
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+
+}
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 a {
@@ -61,6 +69,19 @@ ol, ul {
         line-height: 32px;
     }
 }
+#divLoader {
+    background-color: rgba(255,255,255,0.7);
+    position: absolute;
+    z-index: +100 !important;
+    width: 100%;
+    height: 100%;
+}
+
+    #divLoader img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+    }
 
 /*--------------------------------------------------------------
 # Preloader
@@ -1643,11 +1664,18 @@ section {
     }
 
     .pricing ul i {
-        color: #28a745;
-        font-size: 24px;
-        position: absolute;
-        left: 0;
-        top: 6px;
+        color: #f3f60a;
+        font-size: 14px;
+        margin-right:10px;
+        
+    }
+
+    .pricing ul .fa-check {
+        color: #e2ca0a;
+    }
+
+    .pricing ul .fa-bolt {
+        color: #16b728;
     }
 
     .pricing ul .na {
