@@ -45,6 +45,9 @@ namespace Shipping_Label_App
             })
              .AddEntityFrameworkStores<ApplicationDbContext>()
              .AddDefaultTokenProviders();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(25);//You can set Time   
+            });
 
             //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -69,7 +72,7 @@ namespace Shipping_Label_App
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();

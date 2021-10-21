@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,11 +13,12 @@
 
     <!-- Favicons -->
     @*<link href="~/StaticAssests/assets/img/favicon.png" rel="icon">
-    <link href="~/StaticAssests/assets/img/apple-touch-icon.png" rel="apple-touch-icon">*@
+        <link href="~/StaticAssests/assets/img/apple-touch-icon.png" rel="apple-touch-icon">*@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+    <!-- fontAwwsome-->
+    <link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- Vendor CSS Files -->
     <link href="~/StaticAssests/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="~/StaticAssests/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,12 +32,15 @@
     <link href="~/StaticAssests/assets/css/style.css" rel="stylesheet" />
 
     <style type="text/css">
-       .wave{
-           position: absolute;
-           bottom: -60px;
-           left:0;
-       }
+        .wave {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+        }
     </style>
+    <script>
+        /*    document.addEventListener('contextmenu', event => event.preventDefault());*/
+    </script>
 
 </head>
 <body>
@@ -73,7 +77,7 @@
                     </h1>
                     <p style="color:white">Cut your shipping expenses with a flat discount rate of up to 92%</p>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href='/Identity/Account/Login' class="btn-get-started scrollto">Ship Your First Order</a>
+                        <a href='/Identity/Account/Login' class="btn-get-started scrollto">Ship Yougr First Order</a>
                         <a href='/#services' class=" btn-watch-video"><i class="bi bi-info"></i><span>Learn More</span></a>
                     </div>
                     <div class="hero_btm_area">
@@ -132,8 +136,8 @@
     </section><!-- End Hero -->
 
     <main id="main">
-      
-        <section id="services" class="services section-bg" >
+
+        <section id="services" class="services section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -197,12 +201,12 @@
 
             </div>
         </section><!-- End Services Section -->
-       
+
         <section id="pricing" class="pricing" style="padding-bottom: 0 !important">
             <div class="container" data-aos="fade-up" style="padding:0px !important">
 
                 <div class="section-title">
-                    <h2  class="target">Our Shipping Carriers</h2>
+                    <h2 class="target">Our Shipping Carriers</h2>
                     @*<p style="color: white;">Price is adjusted by volume of orders from the user, here's the standard rates.</p>*@
                 </div>
 
@@ -214,11 +218,17 @@
                             <h5><span>USPS</span></h5>
                             <h4><span>For The Smaller Shipments.</span></h4>
                             <ul>
-                                <li> Up to 60 lbs</li>
-                                <li>Express & Priority Mail</li>
+                                <li>
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    Up to 60 lbs
+                                </li>
+                                <li>
+                                    <i class="fa fa-bolt" aria-hidden="true"></i>
+                                    Express & Priority Mail
+                                </li>
 
                             </ul>
-                              
+
                         </div>
                     </div>
                     <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
@@ -227,59 +237,63 @@
                             <h5><span>UPS</span></h5>
                             <h4><span>For Small & Large Shipments.</span></h4>
                             <ul>
-                                <li> Up to 120lbs</li>
-                                <li>Ground Level Delivery</li>
-
-                            </ul>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-4 mt-4 mt-lg-0 " data-aos="fade-up" data-aos-delay="200">
-                        <div class="box featured">
-                            <img src="~/StaticAssests/assets/img/ups.ico" alt="a" class="img-fluid">
-                            <h5><span>UPS EU</span></h5>
-                            <h4><span>For European Shipments.</span></h4>
-                            <ul>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Up to 120lbs</li>
+                                <li><i class="fa fa-bolt" aria-hidden="true"></i> Ground Level Delivery</li>
+                                <hr style="width:180px; margin: 15px auto;" />
                                 <li>
-                                    Express Shipping
+                                    <i class="fa fa-bolt" aria-hidden="true"></i> Express Shipping
                                 </li>
-                                <li>Only for European Countries</li>
-
+                                <li>(Only for European Countries)</li>
                             </ul>
-
 
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-4 mt-4 mt-lg-0 " data-aos="fade-up" data-aos-delay="200">
                         <div class="box featured">
                             <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
                             <h5><span>FedEx</span></h5>
                             <h4><span>For Larger Shipments & Speed.</span></h4>
                             <ul>
-                                <li> Up to 120lbs</li>
-                                <li> First Overnight, Ground & More</li>
-
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Up to 120lbs</li>
+                                <li><i class="fa fa-bolt" aria-hidden="true"></i> First Overnight, Ground & More</li>
+                                <hr style="width:180px; margin: 15px auto;" />
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Up to 120lbs</li>
+                                <li><i class="fa fa-bolt" aria-hidden="true"></i>Economy & Priority</li>
                             </ul>
 
                         </div>
                     </div>
-
-
-                    <div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-lg-4 mt-4 mt-lg-0 " data-aos="fade-up" data-aos-delay="200">
                         <div class="box featured">
-                            <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
-                            <h5><span>FedEx Intl</span></h5>
-                            <h4><span>For International Shipments.</span></h4>
+                            <img src="~/StaticAssests/assets/img/dhl-png-logo.png" alt="a" class="img-fluid">
+                            <h5><span>DHL</span></h5>
+                            <h4><span>For Worldwide Shipments</span></h4>
                             <ul>
-                                <li> Up to 120lbs</li>
-                                <li>Economy & Priority</li>
-
+                                <li> <i class="fa fa-bolt" aria-hidden="true"></i> Express Worldwide</li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Delivered Duty paid & unpaid</li>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> Up to 3000 Kilograms </li>
                             </ul>
 
                         </div>
                     </div>
+
+
+                    @*<div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
+            <div class="box featured">
+                <img src="~/StaticAssests/assets/img/fedexlogo.png" alt="a" class="img-fluid">
+                <h5><span>FedEx Intl</span></h5>
+                <h4><span>For International Shipments.</span></h4>
+                <ul>
+                    <li> Up to 120lbs</li>
+                    <li><i class="fa fa-bolt" aria-hidden="true"></i>Economy & Priority</li>
+
+                </ul>
+
+            </div>
+        </div>*@
 
                     <div class="col-lg-4 mt-4 mt-lg-0 pt-2" data-aos="fade-up" data-aos-delay="300">
                         <div class="box featured">
@@ -287,8 +301,8 @@
                             <h5><span>Royal Mail</span></h5>
                             <h4><span>For Shipments Throughout UK.</span></h4>
                             <ul>
-                                <li> Up to 20 Kilogram</li>
-                                <li>Economy & Priority</li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Up to 20 Kilogram</li>
+                                <li><i class="fa fa-bolt" aria-hidden="true"></i> Economy & Priority</li>
 
                             </ul>
 
@@ -307,7 +321,6 @@
                 <path fill="#fff" fill-opacity="1" d="M0,128L30,122.7C60,117,120,107,180,128C240,149,300,203,360,192C420,181,480,107,540,90.7C600,75,660,117,720,160C780,203,840,245,900,218.7C960,192,1020,96,1080,80C1140,64,1200,128,1260,160C1320,192,1380,192,1410,192L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
             </svg>
         </section><!-- End Pricing Section -->
-        
         <!-- ======= Testimonials Section ======= -->
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
@@ -318,7 +331,7 @@
                     <p>What they are saying about us</p>
                 </div>
 
-              
+
 
                 <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper">
@@ -411,12 +424,12 @@
 
         </section><!-- End Testimonials Section -->
         <!-- ======= Frequently Asked Questions Section ======= -->
-      
+
         <section id="faq" class="faq section-bg" style="background: rgb(138,207,250); background: linear-gradient(0deg, rgba(138,207,250,1) 0%, rgba(252,254,255,1) 100%); padding-bottom: 0;">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2  class="target">Frequently Asked Questions</h2>
+                    <h2 class="target">Frequently Asked Questions</h2>
                     @*  <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>*@
                 </div>
 
@@ -596,42 +609,104 @@
             </svg>
         </section><!-- End Frequently Asked Questions Section -->
         <!-- ======= Contact Section ======= -->
-        
+
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Contact</h2>
-                    @* <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>*@
+                    <h2>Shipping Calculator</h2>
+                    <p> Save up to 92%. </p>
+                    <p>Use our shipping calculator to estimate your savings, then sign up for a free StopnShip account to download your labels. </p>
                 </div>
-
+                @using Shipping_Label_App.Data;
+                @using Shipping_Label_App.UtilityClasses;
                 <div class="row">
 
-
+                    @{
+                        var State = SessionHelper.GetObjectFromJson<IList<States>>(Context.Session, "States");
+                    }
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch mx-auto">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form role="form" class="php-email-form">
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="name">Your Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" required>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label for="FromStreet">From Street</label>
+                                        <input type="text" name="txtFormStreet" class="form-control" id="txtFormStreet" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="FromCity">From City</label>
+                                        <input type="text" class="form-control" name="txtfromcity" id="txtfromcity" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="FromZip">From Zip</label>
+                                        <input type="text" class="form-control" name="txtFromZip" id="txtFromZip" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">From State</label>
+                                        @*<input asp-for="FromState" class="form-control" />*@
+                                        <select class="form-control" id="ddlfromstate" asp-items="@(new SelectList(State,"Name","Name"))">
+                                            <option value="">Select State</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="Weight">Weight</label>
+                                        <input type="text" class="form-control" name="txtWeight" id="txtWeight" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="Height">Height</label>
+                                        <input type="text" class="form-control" name="txtHeight" id="txtHeight" required>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="name">Your Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label for="name">To Street</label>
+                                        <input type="text" name="txtToStreet" class="form-control" id="txtToStreet" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="name">To City</label>
+                                        <input type="text" class="form-control" name="txtTocity" id="txtTocity" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="ToZip">To Zip</label>
+                                        <input type="text" class="form-control" name="txtToZip" id="txtToZip" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">To State</label>
+                                        @*<input asp-for="FromState" class="form-control" />*@
+                                        <select class="form-control" id="ddlToState" asp-items="@(new SelectList(State,"Name","Name"))">
+                                            <option value="">Select State</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="Width">Width</label>
+                                        <input type="text" class="form-control" name="txtWidth" id="txtWidth" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="Length">Length</label>
+                                        <input type="text" class="form-control" name="txtLength" id="txtLength" required>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="name">Message</label>
-                                <textarea class="form-control" name="message" rows="10" required></textarea>
+
+                            <div id="divLoader" style="display:none;"> <img src="~/StaticAssests/assets/img/Spinner-5.gif" alt="Loader" /> </div>
+                            <div class="text-center"><button type="button" class="btn btn-primary" id="btnSubmit">Submit</button></div>
+                            <div class="col-md-12" style="padding:5px">
+                                <div style="border:1px solid black;">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Logo</th>
+                                                <th>Courier Name</th>
+                                                <th>Rate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ratestable">
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
                         </form>
                     </div>
 
@@ -646,51 +721,7 @@
     <hr />
     <footer id="footer">
 
-        @*<div class="footer-newsletter" style="background-color: #152b48;">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10">
-                            <h4 style="color: white;">Join Us On Telegram</h4>
-                            <p style="color: white;">
-                                You can stay up to date with our services in case of maintenance.
 
-                            </p>
-                            <div class="col-lg-12">
-                                <div class="announcemtn_box aos-init aos-animate" data-aos="fade-up" data-aos-duration="2000">
-                                    <div class="anncemnt_lft">
-                                        <div class="media">
-                                            <img src="~/StaticAssests/assets/img/paper-plan.png" alt="">
-                                            <div class="media-body">
-                                                <h5>Announcements</h5>
-                                                <p>For all the updates &amp; announcements.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="anncemnt_rgt">
-                                        <a href="#" target="_blank" class="btn btn_custom"> <img src="~/StaticAssests/assets/img/telegram.svg" alt="a" class="img-fluid"> Join This Telegram</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="announcemtn_box aos-init" data-aos="fade-up" data-aos-duration="2000">
-                                    <div class="anncemnt_lft">
-                                        <div class="media">
-                                            <img src="~/StaticAssests/assets/img/paper-plan.png" alt="">
-                                            <div class="media-body">
-                                                <h5>Support</h5>
-                                                <p>For all personal support from our team of representatives.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="anncemnt_rgt">
-                                        <a href="#" target="_blank" class="btn btn_custom"> <img src="~/StaticAssests/assets/img/telegram.svg" alt="a" class="img-fluid"> Join This Telegram</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
 
         <div class="footer-top" style="background-color: #061933;">
             <div class="container">
@@ -767,10 +798,7 @@
                 &copy; Copyright <strong></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https:/bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https:/bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+
                 Designed by <a href="https:/zunmansolutions.com/">Zunman Solutions</a>
             </div>
         </div>
@@ -786,6 +814,7 @@
         @RenderBody()
     </div>
 
+
     <!-- Vendor JS Files -->
     <script src="~/StaticAssests/assets/vendor/aos/aos.js"></script>
     <script src="~/StaticAssests/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -797,5 +826,87 @@
 
     <!-- Template Main JS File -->
     <script src="~/StaticAssests/assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        function validationss() {
+            if ($('#txtFormStreet').val().length != 0) {
+
+            }
+        }
+
+        $("#btnSubmit").click(function () {
+            var length = 0; var heigth = 0; var width = 0;
+            if ($('#txtWidth').val() == 0 || $('#txtWidth').val() == "") {
+                width = 8;
+            }
+            if ($('#txtHeight').val() == 0 || $('#txtHeight').val() == "") {
+                heigth = 5;
+            }
+            if ($('#txtLength').val() == 0 || $('#txtLength').val() == "") {
+                length = 10;
+            }
+            var request = {
+                "FromStreet": $('#txtFormStreet').val(),
+                "ToStreet": $('#txtToStreet').val(),
+                "FromCity": $('#txtfromcity').val(),
+                "ToCity": $('#txtTocity').val(),
+                "FromZip": $('#txtFromZip').val(),
+                "ToZip": $('#txtToZip').val(),
+                "FromState": $('#ddlfromstate').val(),
+                "ToState": $('#ddlToState').val(),
+                "Weight": parseInt($('#txtWeight').val()),
+                "Height": parseFloat(heigth),
+                "Width": parseFloat(width),
+                "Length": parseFloat(length)
+            };
+        var a = JSON.stringify(request);
+            console.log(a);
+
+        try {
+            $("#divLoader").show();
+           $.ajax({
+                type: 'POST',
+                url:'@Url.Content("~/Home/RateOrder")',
+               data: a,
+               async: true,
+               processData: false,
+                dataType: 'json',
+                contentType: "application/json",
+               success: function (data) {
+
+                   var row = "";
+                   if (data.status == 'success') {
+                       $.each(data.rates, function (i, item) {
+
+                           if (item.courier_name.includes("USPS")) {
+                               row += "<tr><td> <img src='https://storage.googleapis.com/easyship-assets/app/courier-logos/usps-mini.svg' width='70' height='70' /> </td><td>" + item.courier_name + "</td><td>" + item.total_charge + "</td></tr>";
+                           }
+                           else if (item.courier_name.includes("UPS")) {
+                               row += "<tr><td> <img src='https://storage.googleapis.com/easyship-assets/app/courier-logos/ups-mini.svg' width='70' height='70' /> </td><td>" + item.courier_name + "</td><td>" + item.total_charge + "</td></tr>";
+                           }
+                           else if (item.courier_name.includes("STOPNSHIP")) {
+                               row += "<tr><td> <img src='../StaticAssests/assets/img/heropng2.png' width='70' height='70' /> </td><td>" + item.courier_name + "</td><td>" + item.total_charge + "</td></tr>";
+                           }
+
+
+                       });
+                   }
+                   else {
+                       row += "<tr><td> No shipment carrer found for this address </td ></tr > ";
+                   }
+                   $("#ratestable").html(row);
+                   $("#divLoader").hide();
+
+
+               },
+
+
+            });
+        } catch (e) {
+            console.log(e);
+            $("#divLoader").hide();
+        }
+    });
+    </script>
 </body>
 </html>
